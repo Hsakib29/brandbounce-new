@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 // This component inlines the hero-text.svg for direct access and animation
 
