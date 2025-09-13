@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const AnimatedNavbar = () => {
   const navLinks = [
@@ -23,13 +24,15 @@ const AnimatedNavbar = () => {
             key={link.name}
             className="
               flex items-center justify-center gap-2.5 cursor-pointer relative group
-              text-blue-900
-              after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-blue-900
+              text-[#11406E]
+              after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#11406E]
               after:origin-left after:transition-transform after:duration-300
               after:scale-x-0 group-hover:after:scale-x-100
             "
           >
-            <span className="text-lg font-poppins">{link.name}</span>
+            <span className="text-lg font-poppins hover:underline">
+              {link.name}
+            </span>
           </div>
         ))}
         {/* Language selector section */}
@@ -51,10 +54,10 @@ const AnimatedNavbar = () => {
           </svg>
           <div
             className={
-              "flex items-center justify-center gap-2.5 cursor-pointer text-blue-900 transition-colors duration-200"
+              "flex items-center justify-center gap-2.5 cursor-pointer text-[#11406E] transition-colors duration-200"
             }
           >
-            <span className="text-lg font-poppins">En</span>
+            <span className="text-lg font-poppins hover:underline">En</span>
           </div>
         </div>
       </div>
@@ -64,11 +67,18 @@ const AnimatedNavbar = () => {
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 w-full h-[120px] flex items-center z-50 pointer-events-none">
-      <div className="container mx-auto flex items-center justify-between pointer-events-auto">
+    <header className="fixed top-0 left-0 w-full h-[120px] flex items-center z-50 pointer-events-none px-[30px]">
+      <div className="w-full flex items-center justify-between pointer-events-auto">
         {/* Logo Container, aligned to the left */}
-        <div className="w-[158px] h-[40px] flex items-center justify-center border-2 border-white rounded-md text-white">
-          Logo Placeholder
+        <div className="w-[158px] h-[40px] flex flex-row items-center text-white [mix-blend-mode:plus-darker]">
+          <Image
+            src="/logo-text.svg"
+            alt="Logo"
+            width={158}
+            height={40}
+            className="object-contain"
+            priority
+          />
         </div>
         <AnimatedNavbar />
       </div>
