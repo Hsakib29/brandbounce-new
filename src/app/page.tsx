@@ -1,9 +1,13 @@
+import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 
 export default function HomePage() {
   return (
-    <main style={{ backgroundColor: "white" }}>
-      <HeroSection />
-    </main>
+    <>
+      <Header />
+      <main className="bg-white">
+        <HeroSection />
+      </main>
+    </>
   );
 }
