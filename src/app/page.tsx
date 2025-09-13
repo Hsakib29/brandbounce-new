@@ -2,7 +2,7 @@ import HeroSection from "../components/HeroSection";
 
 export default function HomePage() {
   return (
-    <main>
+    <main style={{ backgroundColor: "white" }}>
       <HeroSection />
     </main>
   );
