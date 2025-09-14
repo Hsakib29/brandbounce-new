@@ -10,7 +10,7 @@ const HeroSection: React.FC = () => (
   >
     {/* Top-aligned content block */}
     <div
-      className="mx-auto mt-16 flex flex-col items-center md:mt-24 lg:mt-44"
+      className="mx-auto mt-4 flex flex-col items-center md:mt-12 lg:mt-24"
       style={{ width: 700, height: 160 }}
     >
       <h1
@@ -34,7 +34,7 @@ const HeroSection: React.FC = () => (
 
     {/* Bottom-aligned content block */}
     <div
-      className="mx-auto mb-16 flex flex-col items-center md:mb-24 lg:mb-44"
+      className="mx-auto mb-4 flex flex-col items-center md:mb-12 lg:mb-24"
       style={{ width: 1920, height: 790 }}
     >
       <HeroTypography />
