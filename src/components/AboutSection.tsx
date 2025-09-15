@@ -104,6 +104,7 @@ const AboutSection: React.FC = () => {
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 width: `${containerWidth}px`,
+                maxWidth: "100vw",
                 height: 600,
                 zIndex: 2,
                 pointerEvents: "none",
