@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import FloatingCard from "./FloatingCard";
 
 const AboutSection: React.FC = () => {
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     triggerOnce: true,
     threshold: 0.3,
   });
@@ -40,7 +40,7 @@ const AboutSection: React.FC = () => {
   // Stage 1: Activate cards with stagger when cards are 70% in view
   useEffect(() => {
     if (cardsInView && !stage1Complete) {
-      let timeoutIds: NodeJS.Timeout[] = [];
+      const timeoutIds: NodeJS.Timeout[] = [];
 
       Array(6)
         .fill(0)
