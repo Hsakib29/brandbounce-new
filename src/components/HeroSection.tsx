@@ -9,7 +9,7 @@ const HeroSection: React.FC = () => {
   const { scrollYProgress } = useScroll();
 
   // Scale + fade animations
-  const speedFactor = 0.4; // smaller → faster animation
+  const speedFactor = 0.2; // smaller → faster animation
   const scale = useTransform(scrollYProgress, [0, speedFactor], [1, 2]);
   const opacity = useTransform(
     scrollYProgress,
