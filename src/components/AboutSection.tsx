@@ -10,52 +10,100 @@ const AboutSection: React.FC = () => {
   });
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
+  const floatingCardsRef = useRef<HTMLDivElement | null>(null);
   const [activeCards, setActiveCards] = useState<boolean[]>(
     Array(6).fill(false)
   );
   const [scrollProgress, setScrollProgress] = useState(0); // 0 → 1
+  const [cardsInView, setCardsInView] = useState(false);
+  const [stage1Complete, setStage1Complete] = useState(false);
 
-  // Stage 1: Activate cards with stagger when section enters view
+  // Monitor floating cards visibility (70% threshold)
   useEffect(() => {
-    if (inView) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setCardsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.7, // 70% of the floating cards must be visible
+        rootMargin: "0px",
+      }
+    );
+
+    if (floatingCardsRef.current) {
+      observer.observe(floatingCardsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Stage 1: Activate cards with stagger when cards are 70% in view
+  useEffect(() => {
+    if (cardsInView && !stage1Complete) {
+      let timeoutIds: NodeJS.Timeout[] = [];
+
       Array(6)
         .fill(0)
         .forEach((_, i) => {
-          setTimeout(() => {
+          const timeout = setTimeout(() => {
             setActiveCards((prev) => {
               const newState = [...prev];
               newState[i] = true;
               return newState;
             });
-          }, i * 200); // 200ms stagger
-        });
-    }
-  }, [inView]);
 
-  // Stage 2: Scroll-driven animation
+            // Mark Stage 1 as complete after the last card
+            if (i === 5) {
+              setTimeout(() => setStage1Complete(true), 200); // Add small delay after last card
+            }
+          }, i * 200); // 200ms stagger
+
+          timeoutIds.push(timeout);
+        });
+
+      return () => timeoutIds.forEach((id) => clearTimeout(id));
+    }
+  }, [cardsInView, stage1Complete]);
+
+  // Stage 2: Smooth, reversible scroll-driven animation
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+      if (!sectionRef.current || !stage1Complete) {
+        return;
+      }
+
       const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      const totalScroll = rect.height + windowHeight;
-      const progressRaw = (windowHeight - rect.top) / totalScroll;
+      // Calculate progress based on section's position in viewport
+      // When section center is at viewport center, progress should be 0.5
+      const sectionCenter = rect.top + rect.height / 2;
+      const viewportCenter = windowHeight / 2;
+      const distanceFromCenter = viewportCenter - sectionCenter;
 
-      // Remap: complete animation by halfway (0.5)
-      const normalize = (value: number, start: number, end: number) => {
-        return Math.min(Math.max((value - start) / (end - start), 0), 1);
+      // Use 35% of window height in each direction for a slower, more controlled animation
+      const animationRange = windowHeight * 0.35;
+
+      // Calculate progress: -1 to 1 range, then normalize to 0 to 1
+      // Add easeInOutCubic easing for smoother acceleration/deceleration
+      const progressRaw = distanceFromCenter / animationRange;
+      const normalizedProgress = (progressRaw + 1) / 2;
+      const clampedProgress = Math.min(Math.max(normalizedProgress, 0), 1);
+
+      // Apply easing function for smoother motion
+      const easeInOutCubic = (x: number): number => {
+        return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
       };
 
-      const progress = normalize(progressRaw, 0, 0.5);
+      const progress = easeInOutCubic(clampedProgress);
 
       setScrollProgress(progress);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll();
+    handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [stage1Complete]); // Only re-run when stage1 completion changes
 
   const containerWidth = 1920 - 670 * scrollProgress; // 1920 → 1250
   const getRotation = (initial: number) => initial * (1 - scrollProgress);
@@ -98,6 +146,7 @@ const AboutSection: React.FC = () => {
           >
             {/* Floating cards */}
             <div
+              ref={floatingCardsRef}
               style={{
                 position: "absolute",
                 top: "50%",
@@ -314,6 +363,36 @@ const AboutSection: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Debug Overlay */}
+      <div className="fixed top-4 left-4 bg-black/80 text-white p-4 rounded-lg text-sm z-50 font-mono space-y-2">
+        <div>🎯 Animation States:</div>
+        <div className={cardsInView ? "text-green-400" : "text-red-400"}>
+          ▸ 70% Visible: {cardsInView ? "YES" : "NO"}
+        </div>
+        <div className={stage1Complete ? "text-green-400" : "text-yellow-400"}>
+          ▸ Stage 1 Complete: {stage1Complete ? "YES" : "NO"}
+        </div>
+        <div>▸ Active Cards: {activeCards.filter(Boolean).length}/6</div>
+        <div className="flex items-center gap-2">
+          <span>▸ Progress:</span>
+          <div className="flex-1 h-2 bg-gray-700 rounded overflow-hidden">
+            <div
+              className="h-full bg-blue-500 transition-all duration-100"
+              style={{ width: `${Math.round(scrollProgress * 100)}%` }}
+            />
+          </div>
+          <span>{Math.round(scrollProgress * 100)}%</span>
+        </div>
+        <div>▸ Container Width: {Math.round(containerWidth)}px</div>
+        <div className="text-xs text-gray-400 mt-2">
+          Stage 2 Animation:
+          <br />
+          {!stage1Complete && "- Waiting for Stage 1 to complete"}
+          <br />
+          {stage1Complete && "✓ Scroll to animate (reversible)"}
         </div>
       </div>
     </section>
