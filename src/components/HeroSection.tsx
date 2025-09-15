@@ -9,8 +9,13 @@ const HeroSection: React.FC = () => {
   const { scrollYProgress } = useScroll();
 
   // Scale + fade animations
-  const scale = useTransform(scrollYProgress, [0, 0.8], [1, 2]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const speedFactor = 0.4; // smaller → faster animation
+  const scale = useTransform(scrollYProgress, [0, speedFactor], [1, 2]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, speedFactor * 0.875],
+    [1, 0]
+  );
 
   return (
     // 3x taller container → more scroll-jack space
