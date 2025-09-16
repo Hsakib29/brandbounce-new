@@ -167,7 +167,7 @@ const AboutSection: React.FC = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                transition: "width 0.1s linear",
+                transition: "width 0.4s ease-in-out",
               }}
             >
               {/* Left column */}
@@ -184,7 +184,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(15)}deg)`,
-                    transition: "transform 0.1s linear",
+                    transition: "transform 0.4s ease-in-out",
                   }}
                 >
                   <FloatingCard
@@ -198,7 +198,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(0)}deg)`,
-                    transition: "transform 0.1s linear",
+                    transition: "transform 0.4s ease-in-out",
                   }}
                 >
                   <FloatingCard
@@ -212,7 +212,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(-15)}deg)`,
-                    transition: "transform 0.1s linear",
+                    transition: "transform 0.4s ease-in-out",
                   }}
                 >
                   <FloatingCard
@@ -239,7 +239,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(-15)}deg)`,
-                    transition: "transform 0.1s linear",
+                    transition: "transform 0.4s ease-in-out",
                   }}
                 >
                   <FloatingCard
@@ -253,7 +253,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(0)}deg)`,
-                    transition: "transform 0.1s linear",
+                    transition: "transform 0.4s ease-in-out",
                   }}
                 >
                   <FloatingCard
@@ -267,7 +267,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(15)}deg)`,
-                    transition: "transform 0.1s linear",
+                    transition: "transform 0.4s ease-in-out",
                   }}
                 >
                   <FloatingCard
