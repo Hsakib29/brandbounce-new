@@ -367,7 +367,7 @@ const AboutSection: React.FC = () => {
       </div>
 
       {/* Debug Overlay */}
-      <div className="fixed top-4 left-4 bg-black/80 text-white p-4 rounded-lg text-sm z-50 font-mono space-y-2">
+      {/* <div className="fixed top-4 left-4 bg-black/80 text-white p-4 rounded-lg text-sm z-50 font-mono space-y-2">
         <div>🎯 Animation States:</div>
         <div className={cardsInView ? "text-green-400" : "text-red-400"}>
           ▸ 70% Visible: {cardsInView ? "YES" : "NO"}
@@ -394,7 +394,7 @@ const AboutSection: React.FC = () => {
           <br />
           {stage1Complete && "✓ Scroll to animate (reversible)"}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
