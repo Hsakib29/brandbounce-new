@@ -17,6 +17,11 @@ const AboutSection: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0); // 0 → 1
   const [cardsInView, setCardsInView] = useState(false);
   const [stage1Complete, setStage1Complete] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   // Monitor floating cards visibility (70% threshold)
   useEffect(() => {
@@ -67,6 +72,8 @@ const AboutSection: React.FC = () => {
 
   // Stage 2: Smooth, reversible scroll-driven animation
   useEffect(() => {
+    if (!hasMounted) return;
+
     const handleScroll = () => {
       if (!sectionRef.current || !stage1Complete) {
         return;
@@ -103,7 +110,7 @@ const AboutSection: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [stage1Complete]); // Only re-run when stage1 completion changes
+  }, [stage1Complete, hasMounted]); // Only re-run when stage1 completion changes
 
   const containerWidth = 1920 - 670 * scrollProgress; // 1920 → 1250
   const getRotation = (initial: number) => initial * (1 - scrollProgress);
