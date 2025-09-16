@@ -40,8 +40,9 @@ const ProcessCard: React.FC<ProcessCardProps> = ({ title, description, icon, isV
 
 // ProcessSection component with scroll-triggered animation
 const ProcessSection = () => {
+  const [hasAnimated, setHasAnimated] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const cardsRef = useRef(null); // Changed the ref name to be more specific
 
   const processSteps = [
     {
@@ -69,33 +70,30 @@ const ProcessSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasAnimated) {
           setIsVisible(true);
-          // Disconnect observer after the animation has been triggered once
-          observer.disconnect();
+          setHasAnimated(true);
         }
       },
       {
-        threshold: 0.3, // Trigger when 30% of the section is visible
-        rootMargin: '0px 0px -100px 0px' // Start animation slightly before fully visible
+        threshold: 0.5,
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (cardsRef.current) { // Changed this line to use cardsRef
+      observer.observe(cardsRef.current);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (cardsRef.current) { // Changed this line to use cardsRef
+        observer.unobserve(cardsRef.current);
       }
     };
-  }, []);
+  }, [hasAnimated]);
 
   return (
     <>
       <div
-        ref={sectionRef}
         className="w-full min-h-screen py-12 px-4 md:px-20 bg-white flex flex-col items-center justify-center gap-4 font-['Poppins']"
       >
         <div className="w-full max-w-7xl h-auto flex flex-col items-center justify-between gap-12">
@@ -110,7 +108,7 @@ const ProcessSection = () => {
             </p>
           </div>
           <div className="w-full flex justify-center h-[500px] relative overflow-hidden">
-            <div className="relative flex items-center justify-center">
+            <div ref={cardsRef} className="relative flex items-center justify-center">
               {processSteps.map((step, index) => (
                 <ProcessCard
                   key={index}
