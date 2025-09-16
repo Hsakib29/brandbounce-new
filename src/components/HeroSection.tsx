@@ -19,7 +19,7 @@ const HeroSection: React.FC = () => {
 
   return (
     // 3x taller container → more scroll-jack space
-    <section className="relative h-[300vh] w-full overflow-visible">
+    <section className="relative h-[250vh] w-full overflow-visible">
       {/* Sticky hero */}
       <motion.div
         className="sticky top-0 flex h-screen w-full flex-col items-center justify-between bg-cover bg-center text-center"

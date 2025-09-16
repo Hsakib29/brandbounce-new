@@ -51,17 +51,7 @@ const AnimatedNavbar: React.FC = () => {
   // Remove stray closing tags
 };
 
-const Header = () => {
-  const [toggleBg, setToggleBg] = useState(false);
-
-  // Change main background color when toggled
-  if (typeof window !== "undefined") {
-    const main = document.querySelector("main");
-    if (main) {
-      main.style.background = toggleBg ? "#FE5D26" : "white";
-    }
-  }
-
+const Header = ({ toggleBg, setToggleBg }) => {
   return (
     <header className="fixed top-0 left-0 w-full h-[120px] flex items-center z-50 pointer-events-none px-[30px]">
       <div className="w-full flex items-center justify-between pointer-events-auto">
@@ -83,7 +73,7 @@ const Header = () => {
             <input
               type="checkbox"
               checked={toggleBg}
-              onChange={() => setToggleBg((prev: boolean) => !prev)}
+              onChange={() => setToggleBg((prev) => !prev)}
             />
             <span className={switchStyles.slider}></span>
           </label>
