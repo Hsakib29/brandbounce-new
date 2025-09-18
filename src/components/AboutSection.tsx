@@ -42,31 +42,11 @@ const AboutSection: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Stage 1: Activate cards with stagger when cards are 70% in view
+  // Stage 1: Activate all cards at once when cards are 70% in view
   useEffect(() => {
     if (cardsInView && !stage1Complete) {
-      const timeoutIds: NodeJS.Timeout[] = [];
-
-      Array(6)
-        .fill(0)
-        .forEach((_, i) => {
-          const timeout = setTimeout(() => {
-            setActiveCards((prev) => {
-              const newState = [...prev];
-              newState[i] = true;
-              return newState;
-            });
-
-            // Mark Stage 1 as complete after the last card
-            if (i === 5) {
-              setTimeout(() => setStage1Complete(true), 200); // Add small delay after last card
-            }
-          }, i * 200); // 200ms stagger
-
-          timeoutIds.push(timeout);
-        });
-
-      return () => timeoutIds.forEach((id) => clearTimeout(id));
+      setActiveCards(Array(6).fill(true));
+      setTimeout(() => setStage1Complete(true), 400); // Add small delay after activation
     }
   }, [cardsInView, stage1Complete]);
 
@@ -167,7 +147,7 @@ const AboutSection: React.FC = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                transition: "width 0.4s ease-in-out",
+                transition: "width 0.6s ease-in-out",
               }}
             >
               {/* Left column */}
@@ -184,7 +164,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(15)}deg)`,
-                    transition: "transform 0.4s ease-in-out",
+                    transition: "transform 0.6s ease-in-out",
                   }}
                 >
                   <FloatingCard
@@ -198,7 +178,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(0)}deg)`,
-                    transition: "transform 0.4s ease-in-out",
+                    transition: "transform 0.6s ease-in-out",
                   }}
                 >
                   <FloatingCard
@@ -212,7 +192,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(-15)}deg)`,
-                    transition: "transform 0.4s ease-in-out",
+                    transition: "transform 0.6s ease-in-out",
                   }}
                 >
                   <FloatingCard
@@ -239,7 +219,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(-15)}deg)`,
-                    transition: "transform 0.4s ease-in-out",
+                    transition: "transform 0.6s ease-in-out",
                   }}
                 >
                   <FloatingCard
@@ -253,7 +233,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(0)}deg)`,
-                    transition: "transform 0.4s ease-in-out",
+                    transition: "transform 0.6s ease-in-out",
                   }}
                 >
                   <FloatingCard
@@ -267,7 +247,7 @@ const AboutSection: React.FC = () => {
                 <div
                   style={{
                     transform: `rotate(${getRotation(15)}deg)`,
-                    transition: "transform 0.4s ease-in-out",
+                    transition: "transform 0.6s ease-in-out",
                   }}
                 >
                   <FloatingCard
