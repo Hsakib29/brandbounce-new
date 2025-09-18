@@ -2,7 +2,6 @@
 import React from "react";
 import switchStyles from "./SwitchToggle.module.css";
 import Image from "next/image";
-import { useState } from "react";
 
 const AnimatedNavbar: React.FC = () => {
   const navLinks = [
@@ -51,7 +50,12 @@ const AnimatedNavbar: React.FC = () => {
   // Remove stray closing tags
 };
 
-const Header = ({ toggleBg, setToggleBg }) => {
+interface HeaderProps {
+  toggleBg: boolean;
+  setToggleBg: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header: React.FC<HeaderProps> = ({ toggleBg, setToggleBg }) => {
   return (
     <header className="fixed top-0 left-0 w-full h-[120px] flex items-center z-50 pointer-events-none px-[30px]">
       <div className="w-full flex items-center justify-between pointer-events-auto">
