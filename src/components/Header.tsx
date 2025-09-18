@@ -1,7 +1,8 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import switchStyles from "./SwitchToggle.module.css";
 import Image from "next/image";
+import { motion, useScroll } from "framer-motion";
 
 const AnimatedNavbar: React.FC = () => {
   const navLinks = [
@@ -56,19 +57,59 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleBg, setToggleBg }) => {
+  const { scrollY } = useScroll();
+  const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
+  const heroHeight = typeof window !== "undefined" ? window.innerHeight : 1000; // fallback
+
+  useEffect(() => {
+    const unsubscribe = scrollY.on("change", (latest) => {
+      setIsScrolledPastHero(latest > heroHeight);
+    });
+    return unsubscribe;
+  }, [scrollY, heroHeight]);
+
   return (
     <header className="fixed top-0 left-0 w-full h-[120px] flex items-center z-50 pointer-events-none px-[30px]">
       <div className="w-full flex items-center justify-between pointer-events-auto">
         {/* Logo Container, aligned to the left */}
-        <div className="w-[158px] h-[40px] flex flex-row items-center text-white [mix-blend-mode:plus-darker]">
-          <Image
-            src="/logo-text.svg"
-            alt="Logo"
-            width={158}
-            height={40}
-            className="object-contain"
-            priority
-          />
+        <div className="relative w-[158px] h-[40px] flex flex-row items-center text-white [mix-blend-mode:plus-darker]">
+          {/* Logo Text - fades out */}
+          <motion.div
+            animate={{ opacity: isScrolledPastHero ? 0 : 1 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="absolute inset-0 flex items-center"
+          >
+            <Image
+              src="/logo-text.svg"
+              alt="Logo Text"
+              width={158}
+              height={40}
+              className="object-contain"
+              priority
+            />
+          </motion.div>
+          {/* Logo Icon - scales up from bottom left */}
+          <motion.div
+            animate={{
+              scale: isScrolledPastHero ? 1 : 0,
+              opacity: isScrolledPastHero ? 1 : 0,
+            }}
+            transition={{
+              duration: 0.4,
+              ease: "easeOut",
+              delay: isScrolledPastHero ? 0.2 : 0, // Delay when appearing
+            }}
+            style={{ transformOrigin: "bottom left" }}
+            className="absolute inset-0 flex items-center"
+          >
+            <Image
+              src="/logo-icon.svg"
+              alt="Logo Icon"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
+          </motion.div>
         </div>
         <div className="flex items-center gap-6">
           <AnimatedNavbar />
