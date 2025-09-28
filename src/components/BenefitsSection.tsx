@@ -128,16 +128,6 @@ const GlassBadge: React.FC<{ text: string; className?: string }> = ({
 };
 
 const BenefitsSection: React.FC = () => {
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "288px 288px 288px 320px",
-    gridTemplateRows: "auto auto auto",
-    gridTemplateAreas:
-      '"area1 area2 area2 area3" "area5 area9 area7 area4" "area6 area9 area8 ."',
-    gap: "20px",
-    alignItems: "start",
-  };
-
   return (
     <section className="relative w-full bg-white py-16 md:py-20 lg:py-24">
       {/* Heading */}
@@ -148,19 +138,16 @@ const BenefitsSection: React.FC = () => {
           <span className="text-orange-500">bounce</span>
         </h2>
 
-        {/* Bento grid layout */}
-        <div className="mx-auto w-fit" style={gridStyle}>
-          {/* Stat card */}
+        {/* Responsive Bento Grid (mobile and desktop) */}
+        <div className="grid grid-cols-3 md:grid-cols-4 [grid-template-rows:repeat(6,minmax(0,130px))] md:[grid-template-rows:repeat(7,minmax(0,170px))] gap-2 md:gap-5 m-4">
+          {/* 0 - 50+ Brands Ignited */}
           <BenefitCard
-            containerClassName="h-96 bg-sky-950"
+            containerClassName="col-start-1 row-start-1 row-span-2 md:col-start-1 md:row-start-1 md:col-span-1 md:row-span-3 bg-sky-950"
             textClassName="text-white"
-            style={{ gridArea: "area1" }}
           >
             <div className="flex h-full flex-col justify-between">
               <div className="flex flex-col gap-3">
-                <div className="font-[Poppins] text-base">
-                  50+ Brands Ignited
-                </div>
+                <div className="font-[Poppins] text-base">50+ Brands Ignited</div>
                 <AvatarGroup
                   images={[
                     "https://placehold.co/42x42",
@@ -170,7 +157,6 @@ const BenefitsSection: React.FC = () => {
                   ]}
                 />
               </div>
-
               <div className="flex flex-col gap-1">
                 <div className="font-[Poppins] text-6xl leading-none">100%</div>
                 <div className="font-[Poppins] text-base">Tailored Vibes</div>
@@ -178,119 +164,88 @@ const BenefitsSection: React.FC = () => {
             </div>
           </BenefitCard>
 
-          {/* Bold Brand Identity */}
+          {/* 1 - Bold Brand Identity */}
           <BenefitCard
-            containerClassName="h-96 bg-neutral-900"
+            containerClassName="col-start-2 row-start-1 col-span-2 row-span-2 md:col-start-2 md:row-start-1 md:col-span-2 md:row-span-3 bg-neutral-900"
             imageSrc="https://placehold.co/620x400"
             filterClassName="bg-gradient-to-r from-zinc-300/50 to-neutral-500/50"
             textClassName="text-white"
             align="center"
-            style={{ gridArea: "area2" }}
-            title={
-              <span className="font-[Poppins] text-6xl leading-none">Bold</span>
-            }
-            subtitle={
-              <span className="font-[Poppins] text-3xl">Brand Identity</span>
-            }
+            title={<span className="font-[Poppins] text-6xl leading-none">Bold</span>}
+            subtitle={<span className="font-[Poppins] text-3xl">Brand Identity</span>}
           />
 
-          {/* Flawless Every Pixel */}
+          {/* 2 - Flawless Every Pixel */}
           <BenefitCard
-            containerClassName="h-48 bg-neutral-400"
+            containerClassName="col-start-1 row-start-3 col-span-2 md:col-start-4 md:row-start-1 md:col-span-1 md:row-span-2 bg-neutral-400"
             imageSrc="https://placehold.co/320x200"
             textClassName="text-white"
-            style={{ gridArea: "area3" }}
-            title={
-              <span className="font-[Poppins] text-base">
-                Flawless Every Pixel
-              </span>
-            }
+            title={<span className="font-[Poppins] text-base">Flawless Every Pixel</span>}
           />
 
-          {/* Motto card */}
+          {/* 3 - Lightning-Fast, Zero Shortcuts */}
           <BenefitCard
-            containerClassName="h-48 bg-neutral-400"
+            containerClassName="col-start-3 row-start-3 row-span-2 md:col-start-1 md:row-start-4 md:col-span-1 md:row-span-2 bg-neutral-400"
+            imageSrc="https://placehold.co/300x200"
+            filterClassName="bg-gradient-to-l from-zinc-300 to-neutral-500/80"
+            textClassName="text-white"
+            title={<span className="font-[Poppins] text-base">Lightning-Fast, Zero Shortcuts</span>}
+          />
+
+          {/* 4 - Digital Designs That Pop */}
+          <BenefitCard
+            containerClassName="col-start-1 row-start-4 md:col-start-2 md:row-start-4 md:col-span-1 md:row-span-4 bg-neutral-400"
+            textClassName="text-white"
+            title={<span className="font-[Poppins] text-base">Digital Designs That Pop</span>}
+          />
+
+          {/* 5 - Your Triumph Fuels Our Cheer */}
+          <BenefitCard
+            containerClassName="col-start-2 row-start-4 md:col-start-3 md:row-start-4 md:col-span-1 md:row-span-2 bg-neutral-400"
+            imageSrc="https://placehold.co/300x200"
+            filterClassName="bg-gradient-to-l from-zinc-300 to-neutral-500/80"
+            textClassName="text-white"
+            title={<span className="font-[Poppins] text-base">Your Triumph Fuels Our Cheer</span>}
+          />
+
+          {/* 6 - Our Motto */}
+          <BenefitCard
+            containerClassName="col-start-1 row-start-5 row-span-2 md:col-start-4 md:row-start-3 md:col-span-1 md:row-span-5 bg-neutral-400"
             imageSrc="https://placehold.co/320x620"
             filterClassName="bg-gradient-to-b from-zinc-300/50 to-neutral-500/50"
             textClassName="text-white"
-            style={{ gridArea: "area4" }}
           >
             <div className="flex h-full flex-col justify-end gap-4">
               <GlassBadge text="Our Motto" />
               <div className="font-[Poppins] text-base">
-                We Don&apos;t Just Design. We Unleash Brands That Stick and
-                Soar.
+                We Don&apos;t Just Design. We Unleash Brands That Stick and Soar.
               </div>
             </div>
           </BenefitCard>
 
-          {/* Lightning Fast */}
+          {/* 7 - Impact That Echoes */}
           <BenefitCard
-            containerClassName="h-48 bg-neutral-400"
+            containerClassName="col-start-2 row-start-5 col-span-2 md:col-start-1 md:row-start-6 md:col-span-1 md:row-span-2 bg-neutral-400"
             imageSrc="https://placehold.co/300x200"
             filterClassName="bg-gradient-to-l from-zinc-300 to-neutral-500/80"
             textClassName="text-white"
-            style={{ gridArea: "area5" }}
-            title={
-              <span className="font-[Poppins] text-base">
-                Lightning-Fast, Zero Shortcuts
-              </span>
-            }
+            title={<span className="font-[Poppins] text-base">Impact That Echoes</span>}
           />
 
-          {/* Impact That Echoes */}
+          {/* 8 - Testimonial */}
           <BenefitCard
-            containerClassName="h-48 bg-neutral-400"
-            imageSrc="https://placehold.co/300x200"
-            filterClassName="bg-gradient-to-l from-zinc-300 to-neutral-500/80"
-            textClassName="text-white"
-            style={{ gridArea: "area6" }}
-            title={
-              <span className="font-[Poppins] text-base">
-                Impact That Echoes
-              </span>
-            }
-          />
-
-          {/* Your Triumph */}
-          <BenefitCard
-            containerClassName="h-48 bg-neutral-400"
-            imageSrc="https://placehold.co/300x200"
-            filterClassName="bg-gradient-to-l from-zinc-300 to-neutral-500/80"
-            textClassName="text-white"
-            style={{ gridArea: "area7" }}
-            title={
-              <span className="font-[Poppins] text-base">
-                Your Triumph Fuels Our Cheer
-              </span>
-            }
-          />
-
-          {/* Testimonial */}
-          <div
-            className="h-48 rounded-[20px] [outline-style:solid] outline-1 outline-offset-[-1px] outline-gray-600 relative overflow-hidden"
-            style={{ gridArea: "area8" }}
+            containerClassName="col-start-2 row-start-6 col-span-2 md:col-start-3 md:row-start-6 md:col-span-1 md:row-span-2 rounded-[20px] [outline-style:solid] outline-1 outline-offset-[-1px] outline-gray-300 bg-white"
+            textClassName="text-gray-700"
           >
-            <div className="w-52 left-[18px] top-[24px] absolute justify-start text-gray-600 text-xs font-normal font-[Poppins]">
-              &quot;BrandBounce didn&apos;t just redesign our look—they infused
-              it with energy that doubled our social engagement overnight. Total
-              game-changer!&quot;
+            <div className="flex h-full flex-col justify-between">
+              <p className="text-sm md:text-xs font-[Poppins]">
+                "BrandBounce didn&apos;t just redesign our look—they infused it with energy that doubled our social engagement overnight. Total game-changer!"
+              </p>
+              <p className="mt-4 text-sm font-[Poppins]">
+                Sarah Patel, Co-Founder, UrbanEats Cafe
+              </p>
             </div>
-            <div className="left-[18px] top-[129px] absolute justify-start text-gray-600 text-base font-[Poppins]">
-              Sarah Patel, Co-Founder, UrbanEats Cafe
-            </div>
-          </div>
-                    {/* Digital Designs That Pop */}
-          <BenefitCard
-            containerClassName="h-[404px] bg-neutral-400"
-            textClassName="text-white"
-            style={{ gridArea: "area9" }}
-            title={
-              <span className="font-[Poppins] text-base">
-                Digital Designs That Pop
-              </span>
-            }
-          />
+          </BenefitCard>
         </div>
       </div>
     </section>
