@@ -114,7 +114,7 @@ const GlassBadge: React.FC<{ text: string; className?: string }> = ({
     <div
       className={[
         "inline-flex h-10 items-center justify-center rounded-3xl px-[12px]",
-        "bg-white/60 outline outline-[0.5px] outline-white/5",
+        "bg-white/60 [outline-style:solid] outline-[0.5px] outline-white/5 outline-offset-2",
         "shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.40)]",
         "backdrop-blur-[5px]",
         className,
@@ -131,10 +131,10 @@ const BenefitsSection: React.FC = () => {
   const gridStyle = {
     display: "grid",
     gridTemplateColumns: "288px 288px 288px 320px",
-    gridTemplateRows: "auto auto auto auto",
+    gridTemplateRows: "auto auto auto",
     gridTemplateAreas:
-      '"area1 area2 area2 area3" "area5 area7 area4 area4" "area6 area8 area4 area4" "area9 . area4 area4"',
-    gap: "0px",
+      '"area1 area2 area2 area3" "area5 area9 area7 area4" "area6 area9 area8 ."',
+    gap: "20px",
     alignItems: "start",
   };
 
@@ -209,7 +209,7 @@ const BenefitsSection: React.FC = () => {
 
           {/* Motto card */}
           <BenefitCard
-            containerClassName="h-[620px] bg-neutral-400"
+            containerClassName="h-48 bg-neutral-400"
             imageSrc="https://placehold.co/320x620"
             filterClassName="bg-gradient-to-b from-zinc-300/50 to-neutral-500/50"
             textClassName="text-white"
@@ -268,7 +268,7 @@ const BenefitsSection: React.FC = () => {
 
           {/* Testimonial */}
           <div
-            className="h-48 rounded-[20px] outline outline-1 outline-offset-[-1px] outline-gray-600 relative overflow-hidden"
+            className="h-48 rounded-[20px] [outline-style:solid] outline-1 outline-offset-[-1px] outline-gray-600 relative overflow-hidden"
             style={{ gridArea: "area8" }}
           >
             <div className="w-52 left-[18px] top-[24px] absolute justify-start text-gray-600 text-xs font-normal font-[Poppins]">
@@ -280,9 +280,9 @@ const BenefitsSection: React.FC = () => {
               Sarah Patel, Co-Founder, UrbanEats Cafe
             </div>
           </div>
-          {/* Digital Designs That Pop */}
+                    {/* Digital Designs That Pop */}
           <BenefitCard
-            containerClassName="h-96 bg-neutral-400"
+            containerClassName="h-[404px] bg-neutral-400"
             textClassName="text-white"
             style={{ gridArea: "area9" }}
             title={
