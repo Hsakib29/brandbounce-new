@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 
 // Assumes Tailwind CSS is available
@@ -42,6 +42,8 @@ export default function ProjectCarousel() {
 
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [scale, setScale] = useState(1);
 
   const handleNext = useCallback(() => {
     setCurrentProjectIndex((prevIndex) => (prevIndex + 1) % projects.length);
@@ -67,7 +69,7 @@ export default function ProjectCarousel() {
   const getCardTransform = useCallback(
     (index: number) => {
       const offset = index - currentProjectIndex;
-      return `translateX(calc(${offset * 100}% + ${offset * 20}px))`;
+      return `translateX(${offset * (256 + 16)}px)`; // 256px card width + 16px gap
     },
     [currentProjectIndex]
   );
@@ -75,24 +77,47 @@ export default function ProjectCarousel() {
   const getCardStyles = useCallback(
     (index: number) => ({
       transform: getCardTransform(index),
-      left: "50%",
-      marginLeft: "-128px",
+      left: "0px",
     }),
     [getCardTransform]
   );
 
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+
+    const updateScale = () => {
+      const width = node.clientWidth;
+      const s = Math.min(1, width / 1104.94);
+      setScale(s);
+    };
+
+    updateScale();
+
+    const ro = new ResizeObserver(updateScale);
+    ro.observe(node);
+
+    window.addEventListener("resize", updateScale);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", updateScale);
+    };
+  }, []);
+
   return (
     <main
-      className="flex flex-col items-center justify-center p-8 bg-white min-h-screen font-['Poppins']"
+      ref={containerRef}
+      className={`relative w-full h-[520px] p-0 box-border bg-transparent font-['Poppins']`}
       onKeyDown={handleKeyDown}
       tabIndex={0}
       role="application"
       aria-label="Project carousel"
     >
-      <section
-        className="w-full relative h-96 my-10 overflow-hidden"
-        aria-label="Projects showcase"
-      >
+      <div className="absolute right-0 top-0" style={{ width: 1104.94, height: 520, transformOrigin: "right center", transform: `scale(${scale})` }}>
+        <section
+          className="w-full h-full relative overflow-hidden"
+          aria-label="Projects showcase"
+        >
         {projects.map((project, index) => (
           <article
             key={project.id}
@@ -175,7 +200,7 @@ export default function ProjectCarousel() {
         ))}
       </section>
 
-      <div className="flex justify-between items-center w-full mt-16">
+        <div className="absolute bottom-3 left-0 right-0 flex justify-between items-center w-full">
         <div role="status" aria-live="polite">
           <span className="text-black text-base font-medium">
             {`0${projects.length}/`}
@@ -237,6 +262,7 @@ export default function ProjectCarousel() {
             </svg>
           </button>
         </nav>
+      </div>
       </div>
     </main>
   );
