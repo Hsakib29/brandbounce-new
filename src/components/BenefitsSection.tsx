@@ -131,7 +131,7 @@ const BenefitsSection: React.FC = () => {
   return (
     <section className="relative w-full bg-white py-16 md:py-20 lg:py-24">
       {/* Heading */}
-      <div className="container mx-auto px-4">
+      <div className="w-full max-w-[1920px] mx-auto px-6 md:px-20">
         <h2 className="mb-10 text-center font-[Bricolage Grotesque] text-4xl md:text-5xl font-normal">
           <span className="text-sky-900">Why Choose </span>
           <span className="text-blue-500">brand</span>
@@ -139,10 +139,10 @@ const BenefitsSection: React.FC = () => {
         </h2>
 
         {/* Responsive Bento Grid (mobile and desktop) */}
-        <div className="grid grid-cols-3 md:grid-cols-4 [grid-template-rows:repeat(6,minmax(0,130px))] md:[grid-template-rows:repeat(7,minmax(0,170px))] gap-2 md:gap-5 m-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:[grid-template-rows:repeat(7,minmax(0,170px))] gap-2 md:gap-5">
           {/* 0 - 50+ Brands Ignited */}
           <BenefitCard
-            containerClassName="col-start-1 row-start-1 row-span-2 md:col-start-1 md:row-start-1 md:col-span-1 md:row-span-3 bg-sky-950"
+            containerClassName="md:col-start-1 md:row-start-1 md:col-span-1 md:row-span-3 bg-sky-950"
             textClassName="text-white"
           >
             <div className="flex h-full flex-col justify-between">
@@ -166,7 +166,7 @@ const BenefitsSection: React.FC = () => {
 
           {/* 1 - Bold Brand Identity */}
           <BenefitCard
-            containerClassName="col-start-2 row-start-1 col-span-2 row-span-2 md:col-start-2 md:row-start-1 md:col-span-2 md:row-span-3 bg-neutral-900"
+            containerClassName="md:col-start-2 md:row-start-1 md:col-span-2 md:row-span-3 bg-neutral-900"
             imageSrc="https://placehold.co/620x400"
             filterClassName="bg-gradient-to-r from-zinc-300/50 to-neutral-500/50"
             textClassName="text-white"
@@ -177,7 +177,7 @@ const BenefitsSection: React.FC = () => {
 
           {/* 2 - Flawless Every Pixel */}
           <BenefitCard
-            containerClassName="col-start-1 row-start-3 col-span-2 md:col-start-4 md:row-start-1 md:col-span-1 md:row-span-2 bg-neutral-400"
+            containerClassName="md:col-start-4 md:row-start-1 md:col-span-1 md:row-span-2 bg-neutral-400"
             imageSrc="https://placehold.co/320x200"
             textClassName="text-white"
             title={<span className="font-[Poppins] text-base">Flawless Every Pixel</span>}
@@ -185,7 +185,7 @@ const BenefitsSection: React.FC = () => {
 
           {/* 3 - Lightning-Fast, Zero Shortcuts */}
           <BenefitCard
-            containerClassName="col-start-3 row-start-3 row-span-2 md:col-start-1 md:row-start-4 md:col-span-1 md:row-span-2 bg-neutral-400"
+            containerClassName="md:col-start-1 md:row-start-4 md:col-span-1 md:row-span-2 bg-neutral-400"
             imageSrc="https://placehold.co/300x200"
             filterClassName="bg-gradient-to-l from-zinc-300 to-neutral-500/80"
             textClassName="text-white"
@@ -194,14 +194,14 @@ const BenefitsSection: React.FC = () => {
 
           {/* 4 - Digital Designs That Pop */}
           <BenefitCard
-            containerClassName="col-start-1 row-start-4 md:col-start-2 md:row-start-4 md:col-span-1 md:row-span-4 bg-neutral-400"
+            containerClassName="md:col-start-2 md:row-start-4 md:col-span-1 md:row-span-4 bg-neutral-400"
             textClassName="text-white"
             title={<span className="font-[Poppins] text-base">Digital Designs That Pop</span>}
           />
 
           {/* 5 - Your Triumph Fuels Our Cheer */}
           <BenefitCard
-            containerClassName="col-start-2 row-start-4 md:col-start-3 md:row-start-4 md:col-span-1 md:row-span-2 bg-neutral-400"
+            containerClassName="md:col-start-3 md:row-start-4 md:col-span-1 md:row-span-2 bg-neutral-400"
             imageSrc="https://placehold.co/300x200"
             filterClassName="bg-gradient-to-l from-zinc-300 to-neutral-500/80"
             textClassName="text-white"
@@ -210,7 +210,7 @@ const BenefitsSection: React.FC = () => {
 
           {/* 6 - Our Motto */}
           <BenefitCard
-            containerClassName="col-start-1 row-start-5 row-span-2 md:col-start-4 md:row-start-3 md:col-span-1 md:row-span-5 bg-neutral-400"
+            containerClassName="md:col-start-4 md:row-start-3 md:col-span-1 md:row-span-5 bg-neutral-400"
             imageSrc="https://placehold.co/320x620"
             filterClassName="bg-gradient-to-b from-zinc-300/50 to-neutral-500/50"
             textClassName="text-white"
@@ -225,7 +225,7 @@ const BenefitsSection: React.FC = () => {
 
           {/* 7 - Impact That Echoes */}
           <BenefitCard
-            containerClassName="col-start-2 row-start-5 col-span-2 md:col-start-1 md:row-start-6 md:col-span-1 md:row-span-2 bg-neutral-400"
+            containerClassName="md:col-start-1 md:row-start-6 md:col-span-1 md:row-span-2 bg-neutral-400"
             imageSrc="https://placehold.co/300x200"
             filterClassName="bg-gradient-to-l from-zinc-300 to-neutral-500/80"
             textClassName="text-white"
@@ -234,12 +234,12 @@ const BenefitsSection: React.FC = () => {
 
           {/* 8 - Testimonial */}
           <BenefitCard
-            containerClassName="col-start-2 row-start-6 col-span-2 md:col-start-3 md:row-start-6 md:col-span-1 md:row-span-2 rounded-[20px] [outline-style:solid] outline-1 outline-offset-[-1px] outline-gray-300 bg-white"
+            containerClassName="md:col-start-3 md:row-start-6 md:col-span-1 md:row-span-2 rounded-[20px] [outline-style:solid] outline-1 outline-offset-[-1px] outline-gray-300 bg-white"
             textClassName="text-gray-700"
           >
             <div className="flex h-full flex-col justify-between">
               <p className="text-sm md:text-xs font-[Poppins]">
-                "BrandBounce didn&apos;t just redesign our look—they infused it with energy that doubled our social engagement overnight. Total game-changer!"
+                &ldquo;BrandBounce didn&apos;t just redesign our look—they infused it with energy that doubled our social engagement overnight. Total game-changer!&rdquo;
               </p>
               <p className="mt-4 text-sm font-[Poppins]">
                 Sarah Patel, Co-Founder, UrbanEats Cafe

@@ -50,6 +50,31 @@ export default function ProjectCarousel() {
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [scale, setScale] = useState(1);
+  const isScaledDown = scale < 1;
+  const containerStyle: React.CSSProperties = useMemo(() => {
+    const base: React.CSSProperties = {
+      width: 1104.94,
+      height: 520,
+      position: "absolute",
+      top: 0,
+    };
+    if (isScaledDown) {
+      return {
+        ...base,
+        transformOrigin: "center center",
+        transform: `translateX(-50%) scale(${scale})`,
+        left: "50%",
+        right: "auto",
+      };
+    }
+    return {
+      ...base,
+      transformOrigin: "right center",
+      transform: `scale(${scale})`,
+      right: 0,
+      left: "auto",
+    };
+  }, [scale, isScaledDown]);
 
   const handleNext = useCallback(() => {
     setCurrentProjectIndex((prevIndex) => (prevIndex + 1) % projects.length);
@@ -120,16 +145,11 @@ export default function ProjectCarousel() {
       aria-label="Project carousel"
     >
       <div
-        className="absolute right-0 top-0"
-        style={{
-          width: 1104.94,
-          height: 520,
-          transformOrigin: "right center",
-          transform: `scale(${scale})`,
-        }}
+        className={isScaledDown ? "absolute left-1/2 top-0" : "absolute right-0 top-0"}
+        style={containerStyle}
       >
         <section
-          className="w-full h-full relative overflow-hidden"
+          className={`w-full h-full relative ${isScaledDown ? "overflow-visible" : "overflow-hidden"}`}
           aria-label="Projects showcase"
         >
           {projects.map((project, index) => (
@@ -214,7 +234,7 @@ export default function ProjectCarousel() {
           ))}
         </section>
 
-        <div className="absolute bottom-3 left-0 right-0 pr-4 pl-2 flex justify-between items-center w-full">
+        <div className="absolute bottom-3 left-0 right-0 pr-0 pl-2 flex justify-between items-center w-full">
           <div role="status" aria-live="polite">
             <span className="text-black text-base font-medium">
               {`0${projects.length}/`}
