@@ -15,7 +15,8 @@ const PortfolioSection: React.FC = () => {
               Success Stories
             </div>
             <div className="w-full lg:w-96 text-gray-600 text-lg md:text-xl font-medium font-['Poppins']">
-              From startups to small businesses, we turn bold ideas into vibrant brand identities that spark growth and engagement.
+              From startups to small businesses, we turn bold ideas into vibrant
+              brand identities that spark growth and engagement.
             </div>
           </div>
           <div className="w-60 h-12 relative">
@@ -29,9 +30,7 @@ const PortfolioSection: React.FC = () => {
         </div>
 
         {/* Carousel container (right column on lg, stacked on small) */}
-        <div className="relative h-[520px]">
-          <ProjectCarousel />
-        </div>
+        <ProjectCarousel />
       </div>
     </section>
   );

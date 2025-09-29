@@ -49,32 +49,17 @@ export default function ProjectCarousel() {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [scale, setScale] = useState(1);
-  const isScaledDown = scale < 1;
-  const containerStyle: React.CSSProperties = useMemo(() => {
-    const base: React.CSSProperties = {
-      width: 1104.94,
+  const [gap, setGap] = useState(16);
+  const containerStyle: React.CSSProperties = useMemo(
+    () => ({
+      width: 1072,
       height: 520,
       position: "absolute",
       top: 0,
-    };
-    if (isScaledDown) {
-      return {
-        ...base,
-        transformOrigin: "center center",
-        transform: `translateX(-50%) scale(${scale})`,
-        left: "50%",
-        right: "auto",
-      };
-    }
-    return {
-      ...base,
-      transformOrigin: "right center",
-      transform: `scale(${scale})`,
       right: 0,
-      left: "auto",
-    };
-  }, [scale, isScaledDown]);
+    }),
+    []
+  );
 
   const handleNext = useCallback(() => {
     setCurrentProjectIndex((prevIndex) => (prevIndex + 1) % projects.length);
@@ -100,9 +85,9 @@ export default function ProjectCarousel() {
   const getCardTransform = useCallback(
     (index: number) => {
       const offset = index - currentProjectIndex;
-      return `translateX(${offset * (256 + 16)}px)`; // 256px card width + 16px gap
+      return `translateX(${offset * (256 + gap)}px)`; // 256px card width + dynamic gap
     },
-    [currentProjectIndex]
+    [currentProjectIndex, gap]
   );
 
   const getCardStyles = useCallback(
@@ -118,9 +103,7 @@ export default function ProjectCarousel() {
     if (!node) return;
 
     const updateScale = () => {
-      const width = node.clientWidth;
-      const s = Math.min(1, width / 1104.94);
-      setScale(s);
+      // No dynamic scaling needed, container is fixed width
     };
 
     updateScale();
@@ -138,18 +121,15 @@ export default function ProjectCarousel() {
   return (
     <main
       ref={containerRef}
-      className={`relative w-full h-[520px] p-0 box-border bg-transparent font-['Poppins']`}
+      className={`w-full h-[520px] p-0 box-border bg-transparent font-['Poppins']`}
       onKeyDown={handleKeyDown}
       tabIndex={0}
       role="application"
       aria-label="Project carousel"
     >
-      <div
-        className={isScaledDown ? "absolute left-1/2 top-0" : "absolute right-0 top-0"}
-        style={containerStyle}
-      >
+      <div className="absolute right-0 top-0" style={containerStyle}>
         <section
-          className={`w-full h-full relative ${isScaledDown ? "overflow-visible" : "overflow-hidden"}`}
+          className="w-full h-full relative overflow-hidden"
           aria-label="Projects showcase"
         >
           {projects.map((project, index) => (
@@ -234,7 +214,7 @@ export default function ProjectCarousel() {
           ))}
         </section>
 
-        <div className="absolute bottom-3 left-0 right-0 pr-0 pl-2 flex justify-between items-center w-full">
+        <div className="absolute bottom-3 left-0 right-0 pr-0 pl-0 flex justify-between items-center w-full">
           <div role="status" aria-live="polite">
             <span className="text-black text-base font-medium">
               {`0${projects.length}/`}
