@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export type BenefitCardProps = {
   // Image behind the card (optional)
@@ -41,9 +42,11 @@ export const BenefitCard: React.FC<BenefitCardProps> = ({
     >
       {imageSrc ? (
         // Background image
-        <img
+        <Image
           src={imageSrc}
           alt=""
+          layout="fill"
+          objectFit="cover"
           className="absolute inset-0 h-full w-full object-cover"
         />
       ) : null}
@@ -94,10 +97,12 @@ const AvatarGroup: React.FC<{ images: string[] }> = ({ images }) => {
   return (
     <div className="flex items-center gap-2">
       {images.slice(0, 4).map((src, i) => (
-        <img
+        <Image
           key={i}
           src={src}
-          alt=""
+          alt={`Avatar ${i + 1}`}
+          width={40}
+          height={40}
           className="h-10 w-10 rounded-full shadow-[0px_4.8px_4.8px_0px_rgba(255,255,255,0.25)]"
         />
       ))}
@@ -266,9 +271,9 @@ const BenefitsSection: React.FC = () => {
           >
             <div className="flex h-full flex-col justify-between">
               <p className="text-sm md:text-xs font-[Poppins]">
-                "BrandBounce didn&apos;t just redesign our look—they infused it
+                &quot;BrandBounce didn&apos;t just redesign our look—they infused it
                 with energy that doubled our social engagement overnight. Total
-                game-changer!"
+                game-changer!&quot;
               </p>
               <p className="mt-4 text-sm font-[Poppins]">
                 Sarah Patel, Co-Founder, UrbanEats Cafe
