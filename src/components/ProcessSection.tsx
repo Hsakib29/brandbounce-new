@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 
 // ProcessCard component, restored to original styling
@@ -24,9 +24,11 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
       style={{
         zIndex: 4 - index,
         opacity: isVisible ? 1 : 0.9,
+        left: "50%",
+        top: "50%",
         transform: isVisible
-          ? `translateX(${(index - 1.5) * 320}px)`
-          : "translateX(0px)",
+          ? `translateX(-50%) translateY(-50%) translateX(${(index - 1.5) * 320}px)`
+          : "translateX(-50%) translateY(-50%)",
       }}
     >
       <div className="relative flex flex-col justify-start items-start gap-[10px]">
@@ -57,7 +59,20 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
 const ProcessSection = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const cardsRef = useRef(null); // Changed the ref name to be more specific
+  const cardsRef = useRef<HTMLDivElement | null>(null); // more specific
+  const [scale, setScale] = useState(1);
+  const BASE_WIDTH = 1280;
+  const scaledWrapperStyle: React.CSSProperties = useMemo(() => {
+    return {
+      width: BASE_WIDTH,
+      height: "100%",
+      position: "absolute" as const,
+      top: "50%",
+      left: "50%",
+      transformOrigin: "center center",
+      transform: `translate(-50%, -50%) scale(${scale})`,
+    };
+  }, [scale]);
 
   const processSteps = [
     {
@@ -111,6 +126,27 @@ const ProcessSection = () => {
     };
   }, [hasAnimated]);
 
+  useEffect(() => {
+    const node = cardsRef.current;
+    if (!node) return;
+
+    const updateScale = () => {
+      const width = node.clientWidth;
+      const s = Math.min(1, width / BASE_WIDTH);
+      setScale(s);
+    };
+
+    updateScale();
+
+    const ro = new ResizeObserver(updateScale);
+    ro.observe(node);
+    window.addEventListener("resize", updateScale);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", updateScale);
+    };
+  }, []);
+
   return (
     <>
       <div className="w-full min-h-screen py-12 px-4 md:px-20 bg-white flex flex-col items-center justify-center gap-4 font-['Poppins']">
@@ -131,21 +167,23 @@ const ProcessSection = () => {
               fun.
             </p>
           </div>
-          <div className="w-full flex justify-center h-[500px] relative overflow-hidden">
+          <div className="w-[100vw] mx-[calc(50%-50vw)] flex justify-center h-[500px] relative overflow-visible">
             <div
               ref={cardsRef}
-              className="relative flex items-center justify-center"
+              className="relative flex items-center justify-center w-full h-full overflow-visible"
             >
-              {processSteps.map((step, index) => (
-                <ProcessCard
-                  key={index}
-                  title={step.title}
-                  description={step.description}
-                  icon={step.icon}
-                  index={index}
-                  isVisible={isVisible}
-                />
-              ))}
+              <div style={scaledWrapperStyle}>
+                {processSteps.map((step, index) => (
+                  <ProcessCard
+                    key={index}
+                    title={step.title}
+                    description={step.description}
+                    icon={step.icon}
+                    index={index}
+                    isVisible={isVisible}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
