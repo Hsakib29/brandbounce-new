@@ -271,9 +271,9 @@ const BenefitsSection: React.FC = () => {
           >
             <div className="flex h-full flex-col justify-between">
               <p className="text-sm md:text-xs font-[Poppins]">
-                "BrandBounce didn&apos;t just redesign our look—they infused it
+                &ldquo;BrandBounce didn&apos;t just redesign our look—they infused it
                 with energy that doubled our social engagement overnight. Total
-                game-changer!"
+                game-changer!&rdquo;
               </p>
               <p className="mt-4 text-sm font-[Poppins]">
                 Sarah Patel, Co-Founder, UrbanEats Cafe

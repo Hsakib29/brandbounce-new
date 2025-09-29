@@ -30,10 +30,7 @@ const HeroSection: React.FC = () => {
       >
         {/* Top content */}
         <div className="mx-auto mt-4 flex flex-col items-center md:mt-12 lg:mt-24">
-          <h1
-            className="font-[Bricolage Grotesque] text-[#11406E]"
-            style={{ fontSize: 30, fontWeight: 500 }}
-          >
+          <h1 className="font-[Bricolage Grotesque] text-[#11406E] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium">
             We&apos;re a creative agency helping brands
             <br />
             make a splash and connect with their audience.
@@ -42,9 +39,9 @@ const HeroSection: React.FC = () => {
             <Image
               src="/icons/downarrow.svg"
               alt="Down Arrow"
-              width={49}
-              height={50}
-              className="animate-bounce"
+              width={48}
+              height={48}
+              className="w-12 h-12 sm:w-14 sm:h-14 animate-bounce"
             />
           </div>
         </div>

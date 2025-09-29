@@ -2,7 +2,6 @@
 
 import React, {
   useState,
-  useMemo,
   useCallback,
   useEffect,
   useRef,
@@ -56,11 +55,6 @@ export default function ProjectCarousel() {
     },
   ];
 
-  const projects = useMemo(
-    () => [...originalProjects, ...originalProjects, ...originalProjects],
-    []
-  );
-
   const updateSizes = useCallback(() => {
     const width = window.innerWidth;
     if (width < 768) {
@@ -82,17 +76,11 @@ export default function ProjectCarousel() {
   const [cardWidth, setCardWidth] = useState(256);
 
   const handleNext = useCallback(() => {
-    setCurrentProjectIndex((prevIndex) => {
-      const next = prevIndex + 1;
-      return next >= originalProjects.length ? 0 : next;
-    });
+    setCurrentProjectIndex((prevIndex) => prevIndex + 1);
   }, []);
 
   const handlePrevious = useCallback(() => {
-    setCurrentProjectIndex((prevIndex) => {
-      const prev = prevIndex - 1;
-      return prev < 0 ? originalProjects.length - 1 : prev;
-    });
+    setCurrentProjectIndex((prevIndex) => prevIndex - 1);
   }, []);
 
   const handleKeyDown = useCallback(
@@ -104,22 +92,6 @@ export default function ProjectCarousel() {
       }
     },
     [handleNext, handlePrevious]
-  );
-
-  const getCardTransform = useCallback(
-    (index: number) => {
-      const offset = index - currentProjectIndex;
-      return `translateX(${offset * (cardWidth + gap)}px) translateY(-50%)`;
-    },
-    [currentProjectIndex, cardWidth, gap]
-  );
-
-  const getCardStyles = useCallback(
-    (index: number) => ({
-      transform: getCardTransform(index),
-      left: "0px",
-    }),
-    [getCardTransform]
   );
 
   useEffect(() => {
@@ -147,33 +119,32 @@ export default function ProjectCarousel() {
           className="w-full h-full relative overflow-hidden"
           aria-label="Projects showcase"
         >
-          {projects.map((project, index) => (
-            <article
-              key={project.id}
-              className={`
-              w-48 h-60 md:w-56 md:h-72 lg:w-64 lg:h-80 p-2.5 absolute top-1/2 cursor-pointer
-              transition-all duration-500 ease-in-out
-              opacity-100 scale-105 z-10
-            `}
-              style={getCardStyles(index)}
-              onMouseEnter={() => setHoveredCardId(project.id)}
-              onMouseLeave={() => setHoveredCardId(null)}
-            >
-              {/* The main card element with dynamic shape */}
-              <div
-                className={`
-              w-full h-full bg-zinc-300 relative
-              transition-all duration-300 ease-in-out
-              ${
-                hoveredCardId === project.id
-                  ? "rounded-tl-[20px] rounded-tr-[20px] rounded-bl-[110px] rounded-br-[20px]"
-                  : "rounded-[20px]"
-              }
-            `}
-              >
-                <Image
+          {Array(100)
+            .fill(0)
+            .map((_, i) => {
+              const project = originalProjects[i % originalProjects.length];
+              const offset = i - currentProjectIndex;
+              return (
+                <article
+                  key={i}
                   className={`
-                  w-full h-full object-cover
+                w-48 h-60 md:w-56 md:h-72 lg:w-64 lg:h-80 p-2.5 absolute top-1/2 cursor-pointer
+                transition-all duration-500 ease-in-out
+                opacity-100 scale-105 z-10
+              `}
+                  style={{
+                    transform: `translateX(${
+                      offset * (cardWidth + gap)
+                    }px) translateY(-50%)`,
+                    left: "0px",
+                  }}
+                  onMouseEnter={() => setHoveredCardId(project.id)}
+                  onMouseLeave={() => setHoveredCardId(null)}
+                >
+                  {/* The main card element with dynamic shape */}
+                  <div
+                    className={`
+                  w-full h-full bg-zinc-300 relative
                   transition-all duration-300 ease-in-out
                   ${
                     hoveredCardId === project.id
@@ -181,47 +152,59 @@ export default function ProjectCarousel() {
                       : "rounded-[20px]"
                   }
                 `}
-                  src={project.src}
-                  alt={project.alt}
-                  fill
-                  sizes="(max-width: 767px) 192px, (max-width: 1023px) 224px, 256px"
-                />
-              </div>
+                  >
+                    <Image
+                      className={`
+                    w-full h-full object-cover
+                    transition-all duration-300 ease-in-out
+                    ${
+                      hoveredCardId === project.id
+                        ? "rounded-tl-[20px] rounded-tr-[20px] rounded-bl-[110px] rounded-br-[20px]"
+                        : "rounded-[20px]"
+                    }
+                  `}
+                      src={project.src}
+                      alt={project.alt}
+                      fill
+                      sizes="(max-width: 767px) 192px, (max-width: 1023px) 224px, 256px"
+                    />
+                  </div>
 
-              {/* The button layered behind the card */}
-              <div
-                className={`
-              w-7 h-7 px-1.5 py-2 absolute bottom-3 left-5 rounded-2xl
-              [outline-style:solid] outline-[0.60px] outline-offset-[-0.60px] outline-sky-900
-              inline-flex justify-center items-center gap-1.5 overflow-hidden
-              bg-white z-[-1]
-            `}
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 4V20"
-                    stroke="#005B96"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M4 12H20"
-                    stroke="#005B96"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </article>
-          ))}
+                  {/* The button layered behind the card */}
+                  <div
+                    className={`
+                  w-7 h-7 px-1.5 py-2 absolute bottom-3 left-5 rounded-2xl
+                  [outline-style:solid] outline-[0.60px] outline-offset-[-0.60px] outline-sky-900
+                  inline-flex justify-center items-center gap-1.5 overflow-hidden
+                  bg-white z-[-1]
+                `}
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 4V20"
+                        stroke="#005B96"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M4 12H20"
+                        stroke="#005B96"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </article>
+              );
+            })}
         </section>
 
         <div className="absolute bottom-3 left-0 right-0 pr-0 pl-0 flex justify-between items-center w-full">
@@ -232,10 +215,7 @@ export default function ProjectCarousel() {
             <span className="text-zinc-300 text-base font-medium">
               Projects
             </span>
-            <span className="sr-only">
-              Currently viewing project {currentProjectIndex + 1} of{" "}
-              {originalProjects.length}
-            </span>
+            <span className="sr-only">Currently viewing projects</span>
           </div>
 
           <nav
