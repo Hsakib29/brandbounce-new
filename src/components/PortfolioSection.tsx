@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const PortfolioSection: React.FC = () => {
   return (
-    <section className="w-full max-w-[1920px] mx-auto relative bg-gray-50 overflow-visible lg:overflow-hidden lg:h-[600px] py-10 md:py-12">
+    <section className="w-full max-w-[1920px] mx-auto relative bg-gray-50 overflow-visible lg:overflow-hidden h-auto lg:h-[600px] py-10 md:py-12">
       <div className="grid lg:grid-cols-[384px_1fr] items-start lg:items-center gap-y-8 lg:gap-y-0 px-6 md:px-10 lg:px-0 lg:pl-[80px] lg:pr-[80px]">
         {/* Text content (left column on lg, stacked on small) */}
         <div className="lg:w-96 inline-flex flex-col justify-start items-start gap-11">
