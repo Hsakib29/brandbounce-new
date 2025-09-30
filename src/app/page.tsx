@@ -6,6 +6,7 @@ import AboutSection from "../components/AboutSection";
 import ProcessSection from "../components/ProcessSection";
 import PortfolioSection from "../components/PortfolioSection";
 import BenefitsSection from "../components/BenefitsSection";
+import TestimonialSection from "../components/TestimonialSection";
 
 export default function HomePage() {
   const [toggleBg, setToggleBg] = useState(false);
@@ -19,6 +20,7 @@ export default function HomePage() {
         <ProcessSection />
         <PortfolioSection />
         <BenefitsSection />
+        <TestimonialSection />
       </main>
     </>
   );
