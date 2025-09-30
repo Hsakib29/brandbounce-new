@@ -22,7 +22,7 @@ const HeroSection: React.FC = () => {
     <section className="relative h-[250vh] w-full overflow-visible">
       {/* Sticky hero */}
       <motion.div
-        className="sticky top-0 flex h-screen w-full flex-col items-center justify-between bg-cover bg-center text-center"
+        className="sticky top-0 flex h-screen w-full flex-col items-center justify-between bg-cover bg-center text-center scale-90 sm:scale-100"
         style={{
           backgroundImage: 'url("/bg/hero-bg.png")',
           opacity,
