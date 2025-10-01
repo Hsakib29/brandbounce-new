@@ -235,29 +235,29 @@ export default function ProjectCarousel() {
               })}
           </section>
 
-          <div className="absolute bottom-3 left-0 right-0 pr-0 pl-0 flex justify-between items-center w-full">
+          <div className="absolute bottom-3 xl:bottom-4 2xl:bottom-5 left-0 right-0 pr-0 pl-0 flex justify-between items-center w-full">
             <div role="status" aria-live="polite">
-              <span className="text-black text-base font-medium">
+              <span className="text-black text-base xl:text-lg 2xl:text-xl font-medium">
                 {`0${originalProjects.length}/`}
               </span>
-              <span className="text-zinc-300 text-base font-medium">
+              <span className="text-zinc-300 text-base xl:text-lg 2xl:text-xl font-medium">
                 Projects
               </span>
               <span className="sr-only">Currently viewing projects</span>
             </div>
 
             <nav
-              className="flex justify-center items-center gap-4"
+              className="flex justify-center items-center gap-4 xl:gap-6 2xl:gap-8"
               aria-label="Project navigation"
             >
               <button
                 onClick={handlePrevious}
-                className="w-12 h-12 px-3 py-2.5 bg-white rounded-3xl [outline-style:solid] outline-1 outline-offset-[-1px] outline-black flex justify-center items-center transform transition-transform duration-200 hover:scale-110 active:scale-95"
+                className="w-12 h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16 px-3 py-2.5 xl:px-4 xl:py-3 2xl:px-5 2xl:py-4 bg-white rounded-full [outline-style:solid] outline-1 outline-offset-[-1px] outline-black flex justify-center items-center transform transition-transform duration-200 hover:scale-110 active:scale-95"
                 aria-label="Previous Project"
                 type="button"
               >
                 <svg
-                  className="w-6 h-6 rotate-180"
+                  className="w-6 h-6 xl:w-7 xl:h-7 2xl:w-8 2xl:h-8 rotate-180"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -275,12 +275,12 @@ export default function ProjectCarousel() {
 
               <button
                 onClick={handleNext}
-                className="w-12 h-12 px-2.5 py-3 rounded-3xl [outline-style:solid] outline-1 outline-offset-[-1px] outline-black flex justify-center items-center transform transition-transform duration-200 hover:scale-110 active:scale-95"
+                className="w-12 h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16 px-2.5 py-3 xl:px-3 xl:py-3.5 2xl:px-4 2xl:py-4 rounded-full [outline-style:solid] outline-1 outline-offset-[-1px] outline-black flex justify-center items-center transform transition-transform duration-200 hover:scale-110 active:scale-95"
                 aria-label="Next Project"
                 type="button"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-6 h-6 xl:w-7 xl:h-7 2xl:w-8 2xl:h-8"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
