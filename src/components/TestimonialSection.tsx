@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 // The InfiniteScrollRow component handles the continuous horizontal scrolling of one row.
 // It accepts a className prop to define its absolute position (top/left) within its parent.
@@ -7,6 +8,11 @@ const InfiniteScrollRow = ({
   reverse = false,
   pauseOnHover = false,
   className = "", // Accepts absolute positioning classes like "left-[-753px] top-[92px]"
+}: {
+  children: React.ReactNode;
+  reverse?: boolean;
+  pauseOnHover?: boolean;
+  className?: string;
 }) => {
   // Use a unique style key for animation to ensure it works correctly when paused
   const animationKeyframes = reverse ? "marquee-reverse" : "marquee";
@@ -45,20 +51,17 @@ const TestimonialCard = ({
 }) => {
   // Using fixed w-96 (384px) to match the fixed width required in the layout
   return (
-    <div className="w-96 h-80 px-3.5 py-2.5 bg-neutral-100 rounded-xl outline outline-1 outline-offset-[-0.90px] outline-zinc-200 inline-flex flex-col justify-start items-start gap-3.5 overflow-hidden">
+    <div className="w-96 h-80 px-3.5 py-2.5 bg-neutral-100 rounded-xl outline-1 outline-offset-[-0.90px] outline-zinc-200 inline-flex flex-col justify-start items-start gap-3.5 overflow-hidden">
       {/* User Info: Removed 'flex-1' from this container to stop it from 
         stretching vertically and pushing the testimonial text down.
       */}
       <div className="inline-flex justify-start items-center gap-3">
-        <img
-          className="w-11 h-11 rounded-full"
+        <Image
+          className="rounded-full"
           src={image}
           alt={name}
-          onError={(e) => {
-            e.currentTarget.onerror = null;
-            e.currentTarget.src =
-              "https://placehold.co/45x45/0d6efd/ffffff?text=U";
-          }}
+          width={44}
+          height={44}
         />
         <div className="inline-flex flex-col justify-start items-start">
           {/* Name: Updated to text-2xl and font-bold to match the image's appearance. */}
@@ -186,7 +189,7 @@ const TestimonialsSection = () => {
             What Our Clients Say
           </div>
           <div className="self-stretch justify-start text-gray-600 text-base md:text-xl font-medium font-['Poppins']">
-            Don't just take our word for it. Here's what our clients have to say
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say
             about working with BrandBounce.
           </div>
         </div>
