@@ -144,7 +144,7 @@ const BenefitsSection: React.FC = () => {
         </h2>
 
         {/* Responsive Bento Grid (mobile and desktop) */}
-        <div className="grid grid-cols-3 md:grid-cols-4 [grid-template-rows:repeat(6,minmax(0,135px))] md:[grid-template-rows:repeat(7,minmax(0,200px))] gap-2 md:gap-5 m-4">
+        <div className="grid grid-cols-3 md:grid-cols-4 [grid-template-rows:repeat(6,minmax(0,135px))] md:[grid-template-rows:repeat(4,minmax(0,200px))] gap-2 md:gap-5 m-4">
           {/* 0 - 50+ Brands Ignited */}
           <BenefitCard
             containerClassName="col-start-1 row-start-1 row-span-2 md:col-start-1 md:row-start-1 md:col-span-1 md:row-span-2 bg-sky-950"
@@ -271,9 +271,9 @@ const BenefitsSection: React.FC = () => {
           >
             <div className="flex h-full flex-col justify-between">
               <p className="text-sm md:text-xs font-[Poppins]">
-                &ldquo;BrandBounce didn&apos;t just redesign our look—they infused it
-                with energy that doubled our social engagement overnight. Total
-                game-changer!&rdquo;
+                &ldquo;BrandBounce didn&apos;t just redesign our look—they
+                infused it with energy that doubled our social engagement
+                overnight. Total game-changer!&rdquo;
               </p>
               <p className="mt-4 text-sm font-[Poppins]">
                 Sarah Patel, Co-Founder, UrbanEats Cafe

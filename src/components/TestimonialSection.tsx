@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 // The InfiniteScrollRow component handles the continuous horizontal scrolling of one row.
 // It accepts a className prop to define its absolute position (top/left) within its parent.
@@ -42,12 +41,10 @@ const TestimonialCard = ({
   name,
   company,
   testimonial,
-  image,
 }: {
   name: string;
   company: string;
   testimonial: string;
-  image: string;
 }) => {
   // Using fixed w-96 (384px) to match the fixed width required in the layout
   return (
@@ -56,13 +53,9 @@ const TestimonialCard = ({
         stretching vertically and pushing the testimonial text down.
       */}
       <div className="inline-flex justify-start items-center gap-3">
-        <Image
-          className="rounded-full"
-          src={image}
-          alt={name}
-          width={44}
-          height={44}
-        />
+        <div className="w-11 h-11 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+          {name.charAt(0)}
+        </div>
         <div className="inline-flex flex-col justify-start items-start">
           {/* Name: Updated to text-2xl and font-bold to match the image's appearance. */}
           <div className="justify-start text-sky-950 text-2xl font-bold font-['Poppins']">
@@ -85,40 +78,44 @@ const TestimonialCard = ({
 
 // Main component to assemble the testimonial layout
 const TestimonialsSection = () => {
-  // Longer testimonial text to match the provided structure's visual density
-  const longTestimonialText =
-    "Working with this team was a game-changer for our business. Their insights were invaluable, and the execution was flawless.";
+  const testimonials = [
+    "Working with this team was a game-changer for our business. Their insights were invaluable, and the execution was flawless.",
+    "The branding strategy they developed helped us stand out in a crowded market. Highly recommend their services!",
+    "From concept to launch, their attention to detail and creativity exceeded our expectations. A true partner in success.",
+    "They transformed our outdated image into something modern and engaging. Our customers love the new look!",
+    "Professional, responsive, and innovative. BrandBounce delivered results that spoke for themselves.",
+    "Their marketing campaigns drove significant growth for us. We saw a 40% increase in engagement within months.",
+    "The team listened to our needs and delivered a brand identity that perfectly captured our vision.",
+    "Exceptional work on our website redesign. It's not just beautiful, it's functional and user-friendly.",
+    "BrandBounce's expertise in digital marketing helped us reach new audiences we never thought possible.",
+    "Collaborating with them was seamless. They brought fresh ideas and executed them with precision.",
+  ];
 
   const firstRowTestimonials = [
     {
       name: "Terry Marvin",
       company: "Hand - Hills",
-      testimonial: longTestimonialText,
-      image: "https://placehold.co/45x45/0d6efd/ffffff?text=TM",
+      testimonial: testimonials[0],
     },
     {
       name: "Eleanor Dooley",
       company: "Emmerich, Sanford and Ledner",
-      testimonial: longTestimonialText,
-      image: "https://placehold.co/45x45/0d6efd/ffffff?text=ED",
+      testimonial: testimonials[1],
     },
     {
       name: "Jimmy Bailey",
       company: "Waters, Gleason and Feeney",
-      testimonial: longTestimonialText,
-      image: "https://placehold.co/45x45/0d6efd/ffffff?text=JB",
+      testimonial: testimonials[2],
     },
     {
       name: "Ms. Bradford Aufderhar",
       company: "Wunsch, Farrell and Dare",
-      testimonial: longTestimonialText,
-      image: "https://placehold.co/45x45/0d6efd/ffffff?text=BA",
+      testimonial: testimonials[3],
     },
     {
       name: "Arthur Prosacco",
       company: "Rodriguez and Sons",
-      testimonial: longTestimonialText,
-      image: "https://placehold.co/45x45/0d6efd/ffffff?text=AP",
+      testimonial: testimonials[4],
     },
   ];
 
@@ -126,32 +123,27 @@ const TestimonialsSection = () => {
     {
       name: "Cecilia Considine",
       company: "Carroll Inc",
-      testimonial: longTestimonialText,
-      image: "https://placehold.co/45x45/0d6efd/ffffff?text=CC",
+      testimonial: testimonials[5],
     },
     {
       name: "Juana Luettgen",
       company: "Schaefer - Harber",
-      testimonial: longTestimonialText,
-      image: "https://placehold.co/45x45/0d6efd/ffffff?text=JL",
+      testimonial: testimonials[6],
     },
     {
       name: "Pamela Yost",
       company: "Lynch and Sons",
-      testimonial: longTestimonialText,
-      image: "https://placehold.co/45x45/0d6efd/ffffff?text=PY",
+      testimonial: testimonials[7],
     },
     {
       name: "Glenn Carter",
       company: "Feest - Abbott",
-      testimonial: longTestimonialText,
-      image: "https://placehold.co/45x45/0d6efd/ffffff?text=GC",
+      testimonial: testimonials[8],
     },
     {
       name: "Lynette Considine",
       company: "Schiller - Armstrong",
-      testimonial: longTestimonialText,
-      image: "https://placehold.co/45x45/0d6efd/ffffff?text=LC",
+      testimonial: testimonials[9],
     },
   ];
 
@@ -189,8 +181,8 @@ const TestimonialsSection = () => {
             What Our Clients Say
           </div>
           <div className="self-stretch justify-start text-gray-600 text-base md:text-xl font-medium font-['Poppins']">
-            Don&apos;t just take our word for it. Here&apos;s what our clients have to say
-            about working with BrandBounce.
+            Don&apos;t just take our word for it. Here&apos;s what our clients
+            have to say about working with BrandBounce.
           </div>
         </div>
 
