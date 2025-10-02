@@ -163,22 +163,14 @@ export default function ProjectCarousel() {
                   <article
                     key={i}
                     className={`
-                w-48 h-60 md:w-56 md:h-72 lg:w-64 lg:h-80 p-2.5 absolute top-[320px] md:top-[380px] lg:top-1/2 cursor-pointer
+                w-48 h-60 md:w-56 md:h-72 lg:w-64 lg:h-80 p-2.5 absolute top-1/2 cursor-pointer
                 transition-all duration-500 ease-in-out
                 opacity-100 scale-105 z-10
               `}
                     style={{
-                      transform: `translateX(${offset * (cardWidth + gap)}px) ${
-                        cardWidth === 192
-                          ? // Mobile: downward cascading animation
-                            `translateY(${
-                              offset === 0
-                                ? 0 // Top card stays at starting position
-                                : Math.abs(offset) * 40 // Subsequent cards cascade downward
-                            }px)`
-                          : // Desktop: symmetric spread around center
-                            "translateY(-50%)"
-                      }`,
+                      transform: `translateX(${
+                        offset * (cardWidth + gap)
+                      }px) translateY(-50%)`,
                       left: "0px",
                     }}
                     onMouseEnter={() => setHoveredCardId(project.id)}
