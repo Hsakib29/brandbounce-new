@@ -9,6 +9,7 @@ interface ProcessCardProps {
   icon: string;
   isVisible: boolean;
   index: number;
+  isMobile: boolean;
 }
 
 const ProcessCard: React.FC<ProcessCardProps> = ({
@@ -17,6 +18,7 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
   icon,
   isVisible,
   index,
+  isMobile,
 }) => {
   return (
     <div
@@ -25,9 +27,15 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
         zIndex: 4 - index,
         opacity: isVisible ? 1 : 0.9,
         left: "50%",
-        top: "50%",
+        top: "40%",
         transform: isVisible
-          ? `translateX(-50%) translateY(-50%) translateX(${(index - 1.5) * 320}px)`
+          ? `translateX(-50%) translateY(-50%) ${
+              isMobile
+                ? `translateY(${index * 320 + 100}px)`
+                : `translateX(${(index - 1.5) * 320}px)`
+            }`
+          : isMobile
+          ? "translateX(-50%) translateY(-50%) translateY(100px)"
           : "translateX(-50%) translateY(-50%)",
       }}
     >
@@ -59,7 +67,10 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
 const ProcessSection = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [textVisible, setTextVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const cardsRef = useRef<HTMLDivElement | null>(null); // more specific
+  const textRef = useRef<HTMLDivElement | null>(null); // for text animation
   const [scale, setScale] = useState(1);
   const BASE_WIDTH = 1280;
   const scaledWrapperStyle: React.CSSProperties = useMemo(() => {
@@ -67,12 +78,12 @@ const ProcessSection = () => {
       width: BASE_WIDTH,
       height: "100%",
       position: "absolute" as const,
-      top: "50%",
+      top: isMobile ? "298px" : "50%",
       left: "50%",
       transformOrigin: "center center",
-      transform: `translate(-50%, -50%) scale(${scale})`,
+      transform: `translate(-50%, -50%) scale(${isMobile ? 1 : scale})`,
     };
-  }, [scale]);
+  }, [scale, isMobile]);
 
   const processSteps = [
     {
@@ -126,9 +137,46 @@ const ProcessSection = () => {
     };
   }, [hasAnimated]);
 
+  // Mobile detection effect
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener("resize", checkIsMobile);
+
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
+
+  // Separate text animation effect
+  useEffect(() => {
+    const element = textRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTextVisible(true);
+        }
+      },
+      {
+        threshold: 0.3, // Lower threshold for earlier text animation
+      }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      if (element) {
+        observer.unobserve(element);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     const node = cardsRef.current;
-    if (!node) return;
+    if (!node || isMobile) return;
 
     const updateScale = () => {
       const width = node.clientWidth;
@@ -145,15 +193,16 @@ const ProcessSection = () => {
       ro.disconnect();
       window.removeEventListener("resize", updateScale);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <>
       <div className="w-full min-h-screen py-12 px-4 md:px-20 bg-white flex flex-col items-center justify-center gap-4 font-['Poppins']">
         <div className="w-full max-w-7xl h-auto flex flex-col items-center justify-between gap-12">
           <div
+            ref={textRef}
             className={`p-4 flex flex-col items-center justify-center gap-4 max-w-4xl text-center transition-all duration-1000 ${
-              isVisible
+              textVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
@@ -167,7 +216,11 @@ const ProcessSection = () => {
               fun.
             </p>
           </div>
-          <div className="w-[100vw] mx-[calc(50%-50vw)] flex justify-center h-[500px] relative overflow-visible">
+          <div
+            className={`w-[100vw] mx-[calc(50%-50vw)] flex justify-center relative overflow-visible ${
+              isMobile ? "h-[1500px]" : "h-[500px]"
+            }`}
+          >
             <div
               ref={cardsRef}
               className="relative flex items-center justify-center w-full h-full overflow-visible"
@@ -181,6 +234,7 @@ const ProcessSection = () => {
                     icon={step.icon}
                     index={index}
                     isVisible={isVisible}
+                    isMobile={isMobile}
                   />
                 ))}
               </div>
