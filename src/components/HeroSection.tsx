@@ -6,6 +6,7 @@ import HeroTypography from "./HeroTypography";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const HeroSection: React.FC = () => {
+  console.log("HeroSection rendering");
   const { scrollYProgress } = useScroll();
 
   // Scale + fade animations

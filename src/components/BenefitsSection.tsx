@@ -45,8 +45,7 @@ export const BenefitCard: React.FC<BenefitCardProps> = ({
         <Image
           src={imageSrc}
           alt=""
-          layout="fill"
-          objectFit="cover"
+          fill
           className="absolute inset-0 h-full w-full object-cover"
         />
       ) : null}
@@ -133,6 +132,7 @@ const GlassBadge: React.FC<{ text: string; className?: string }> = ({
 };
 
 const BenefitsSection: React.FC = () => {
+  console.log("BenefitsSection rendering");
   return (
     <section className="relative w-full bg-white py-16 md:py-20 lg:py-24">
       {/* Heading */}

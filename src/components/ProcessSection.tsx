@@ -1,6 +1,17 @@
 "use client";
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
+import { Bricolage_Grotesque, Poppins } from "next/font/google";
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
 
 // ProcessCard component, restored to original styling
 interface ProcessCardProps {
@@ -53,10 +64,14 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
           </div>
         )}
       </div>
-      <div className="self-stretch text-[#11406E] text-[32px] font-['Bricolage_Grotesque'] font-semibold">
+      <div
+        className={`self-stretch text-[#11406E] text-[32px] font-semibold ${bricolage.className}`}
+      >
         {title}
       </div>
-      <div className="self-stretch flex-1 text-[#4B5563] text-base font-['Poppins'] font-normal">
+      <div
+        className={`self-stretch flex-1 text-[#4B5563] text-base font-normal ${poppins.className}`}
+      >
         {description}
       </div>
     </div>
@@ -197,7 +212,9 @@ const ProcessSection = () => {
 
   return (
     <>
-      <div className="w-full min-h-screen py-12 px-4 md:px-20 bg-white flex flex-col items-center justify-center gap-4 font-['Poppins']">
+      <div
+        className={`w-full min-h-screen py-12 px-4 md:px-20 bg-white flex flex-col items-center justify-center gap-4 ${poppins.className}`}
+      >
         <div className="w-full max-w-7xl h-auto flex flex-col items-center justify-between gap-12">
           <div
             ref={textRef}
@@ -207,7 +224,9 @@ const ProcessSection = () => {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <h1 className="text-[#11406E] text-4xl lg:text-5xl font-['Bricolage_Grotesque'] font-semibold">
+            <h1
+              className={`text-[#11406E] text-4xl lg:text-5xl font-semibold ${bricolage.className}`}
+            >
               Getting Started with BrandBounce is a Breeze
             </h1>
             <p className="text-gray-600 text-lg md:text-xl font-medium">
@@ -242,9 +261,6 @@ const ProcessSection = () => {
           </div>
         </div>
       </div>
-      <style>{`
-        @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600&family=Poppins:wght@400;500&display=swap");
-      `}</style>
     </>
   );
 };

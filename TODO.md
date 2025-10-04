@@ -1,7 +1,11 @@
-# TODO: Make TestimonialSection Responsive
+# Responsive About Section Animation and Layout
 
-- [x] Update main container with responsive padding (px-4 sm:px-8 md:px-12 lg:px-20) and flexible min-height (min-h-[600px] sm:min-h-[800px] lg:min-h-[1000px])
-- [x] Make TestimonialCard responsive: Change to w-full max-w-[384px], adjust height to min-h-[320px], ensure text wraps
-- [x] Improve text responsiveness: Adjust font sizes in title/description for better readability on small screens
-- [x] Make marquee responsive: Show animated marquee on all screen sizes with responsive positioning and dimensions
-- [x] Test responsiveness on various screen sizes (server running at http://localhost:3000)
+## Tasks
+- [x] Convert fixed px dimensions to responsive units (vw, rem, %)
+- [x] Add mobile breakpoint logic (<768px): stack cards vertically, simplify animation
+- [x] Adjust container width calculation to be proportional to screen size
+- [x] Make font sizes responsive with rem
+- [x] Adjust padding and gaps for smaller screens
+- [x] Cap max widths and heights to prevent overflow
+- [ ] Test on different viewports (desktop, tablet, mobile)
+- [ ] Ensure animations work smoothly on all devices

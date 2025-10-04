@@ -1,12 +1,16 @@
 "use client";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Header from "../components/Header";
-import HeroSection from "../components/HeroSection";
+const HeroSection = dynamic(() => import("../components/HeroSection"), {
+  ssr: false,
+});
 import AboutSection from "../components/AboutSection";
 import ProcessSection from "../components/ProcessSection";
 import PortfolioSection from "../components/PortfolioSection";
 import BenefitsSection from "../components/BenefitsSection";
 import TestimonialSection from "../components/TestimonialSection";
+import CTASection from "../components/CTASection";
 
 export default function HomePage() {
   const [toggleBg, setToggleBg] = useState(false);
@@ -21,6 +25,7 @@ export default function HomePage() {
         <PortfolioSection />
         <BenefitsSection />
         <TestimonialSection />
+        <CTASection />
       </main>
     </>
   );
