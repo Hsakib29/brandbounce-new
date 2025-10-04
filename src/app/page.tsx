@@ -18,7 +18,7 @@ export default function HomePage() {
   const [toggleBg, setToggleBg] = useState(false);
 
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col justify-end">
+    <div className="bg-white min-h-screen flex flex-col justify-end">
       <Header toggleBg={toggleBg} setToggleBg={setToggleBg} />
       <main className={toggleBg ? "bg-[#FE5D26]" : "bg-white"}>
         <HeroSection />
