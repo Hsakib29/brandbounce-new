@@ -1,5 +1,7 @@
+import plugin from "tailwindcss/plugin";
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: "class",
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -11,6 +13,17 @@ module.exports = {
       colors: {
         primary: "#11406E",
         "brand-blue": "#11406E",
+      },
+      fontFamily: {
+        bricolage: ['"Bricolage Grotesque"', "sans-serif"],
+        poppins: ['"Poppins"', "sans-serif"],
+      },
+      fontSize: {
+        64: "64px",
+      },
+      backgroundImage: {
+        "radial-new":
+          "radial-gradient(ellipse 133.06% 77.69% at 50% 100%, #6e869f 0%, rgba(10, 37, 64, 0) 100%)",
       },
       animation: {
         marquee: "marquee 20s linear infinite",
@@ -33,5 +46,22 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".avatar-group": {
+          position: "absolute",
+          top: "0",
+          left: "50%",
+          transform: "translateX(-50%)",
+        },
+        ".cta-island": {
+          "@media (max-width: 768px)": {
+            "padding-top": "2rem",
+            "padding-bottom": "2rem",
+          },
+        },
+      });
+    }),
+  ],
 };

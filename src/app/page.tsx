@@ -12,12 +12,13 @@ import BenefitsSection from "../components/BenefitsSection";
 import TestimonialSection from "../components/TestimonialSection";
 import FAQSection from "../components/FAQSection";
 import CTASection from "../components/CTASection";
+import FooterSection from "../components/FooterSection";
 
 export default function HomePage() {
   const [toggleBg, setToggleBg] = useState(false);
 
   return (
-    <>
+    <div className="bg-gray-100 min-h-screen flex flex-col justify-end">
       <Header toggleBg={toggleBg} setToggleBg={setToggleBg} />
       <main className={toggleBg ? "bg-[#FE5D26]" : "bg-white"}>
         <HeroSection />
@@ -29,7 +30,8 @@ export default function HomePage() {
         <FAQSection />
         <CTASection />
       </main>
-    </>
+      <FooterSection />
+    </div>
   );
 }
 /*Chekpoint*/
