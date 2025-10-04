@@ -10,6 +10,7 @@ import ProcessSection from "../components/ProcessSection";
 import PortfolioSection from "../components/PortfolioSection";
 import BenefitsSection from "../components/BenefitsSection";
 import TestimonialSection from "../components/TestimonialSection";
+import FAQSection from "../components/FAQSection";
 import CTASection from "../components/CTASection";
 
 export default function HomePage() {
@@ -25,6 +26,7 @@ export default function HomePage() {
         <PortfolioSection />
         <BenefitsSection />
         <TestimonialSection />
+        <FAQSection />
         <CTASection />
       </main>
     </>
