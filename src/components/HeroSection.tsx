@@ -71,7 +71,7 @@ const HeroSection: React.FC = () => {
       <section className="relative h-[80vh] lg:h-[200vh] w-full overflow-visible">
         {/* Sticky hero */}
         <motion.div
-          className="sticky top-0 flex h-[80vh] lg:h-screen w-full flex-col items-center bg-white text-center pt-16 lg:pt-0 scale-70 sm:scale-80 md:scale-90 lg:scale-100"
+          className="sticky top-0 flex h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-screen w-full flex-col items-center bg-white text-center pt-4 lg:pt-0 scale-70 sm:scale-80 md:scale-90 lg:scale-100"
           style={{
             opacity: isLarge ? opacity : 1,
           }}
@@ -95,13 +95,13 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* Top content */}
-          <div className="relative z-10 mx-auto mt-24 flex flex-col items-center md:mt-28 lg:mt-36">
+          <div className="relative z-10 mx-auto mt-8 flex flex-col items-center md:mt-28 lg:mt-36">
             <h1 className="font-[Bricolage Grotesque] text-[#11406E] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium">
               We&apos;re a creative agency helping brands
               <br />
               make a splash and connect with their audience.
             </h1>
-            <div className="mt-8">
+            <div className="mt-2">
               <Image
                 src="/icons/downarrow.svg"
                 alt="Down Arrow"
@@ -114,13 +114,13 @@ const HeroSection: React.FC = () => {
 
           {/* Typography scaling in place */}
           <motion.div
-            className="relative z-10 mx-auto mt-8 mb-4 flex flex-col items-center md:mt-12 md:mb-12 lg:mt-16 lg:mb-24 overflow-visible scale-90 sm:scale-95 md:scale-100"
+            className="relative z-10 mx-auto mt-1 mb-2 flex flex-col items-center md:mt-12 md:mb-12 lg:mt-16 lg:mb-24 overflow-visible scale-90 sm:scale-95 md:scale-100"
             style={{
               scale: heroTypographyScale,
               transformOrigin: "center center",
             }}
           >
-            <div className="max-w-[1400px] h-[600px] flex justify-center items-center">
+            <div className="max-w-[1400px] h-[10vh] md:h-[600px] flex justify-center items-center">
               <HeroTypography />
             </div>
           </motion.div>

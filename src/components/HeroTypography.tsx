@@ -8,19 +8,19 @@ const HeroTypography = () => {
     {
       text: "Designs",
       weight: "font-bold",
-      size: "text-[20vw] sm:text-[22vw] md:text-[24vw] lg:text-[26vw] xl:text-[28vw]",
+      size: "text-[22vw] sm:text-[22vw] md:text-[24vw] lg:text-[26vw] xl:text-[28vw]",
       color: "#11406E",
     },
     {
       text: "that build",
       weight: "font-medium",
-      size: "text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[18vw] xl:text-[20vw]",
+      size: "text-[16vw] sm:text-[15vw] md:text-[16vw] lg:text-[18vw] xl:text-[20vw]",
       color: "#436B92",
     },
     {
       text: "Brands",
       weight: "font-bold",
-      size: "text-[20vw] sm:text-[22vw] md:text-[24vw] lg:text-[26vw] xl:text-[28vw]",
+      size: "text-[22vw] sm:text-[22vw] md:text-[24vw] lg:text-[26vw] xl:text-[28vw]",
       color: "#A3ABB5",
     },
   ];
