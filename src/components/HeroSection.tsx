@@ -2,141 +2,20 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-
-// HeroTypography Component
-const HeroTypography = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const textSequence = [
-    {
-      text: "Designs",
-      weight: "font-bold",
-      size: "text-[500px]",
-      color: "#11406E",
-    },
-    {
-      text: "that build",
-      weight: "font-medium",
-      size: "text-[400px]",
-      color: "#436B92",
-    },
-    {
-      text: "Brands",
-      weight: "font-bold",
-      size: "text-[500px]",
-      color: "#A3ABB5",
-    },
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % textSequence.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const current = textSequence[currentIndex];
-
-  return (
-    <>
-      <style jsx>{`
-        .jt {
-          position: relative;
-          font-family: "Bricolage Grotesque", sans-serif;
-          text-transform: none;
-          font-display: swap;
-          line-height: 1;
-        }
-
-        .jt__row {
-          display: block;
-        }
-
-        .jt__row:nth-child(1) {
-          clip-path: polygon(-10% 75%, 110% 75%, 110% 110%, -10% 110%);
-        }
-
-        .jt__row:nth-child(2) {
-          clip-path: polygon(-10% 50%, 110% 50%, 110% 75.3%, -10% 75.3%);
-        }
-
-        .jt__row:nth-child(3) {
-          clip-path: polygon(-10% 25%, 110% 25%, 110% 50.3%, -10% 50.3%);
-        }
-
-        .jt__row:nth-child(4) {
-          clip-path: polygon(-10% 0%, 110% 0%, 110% 25.3%, -10% 25.3%);
-        }
-
-        .jt__row.jt__row--sibling {
-          position: absolute;
-          top: 0;
-          left: 0;
-          user-select: none;
-          width: 100%;
-        }
-
-        .jt__text {
-          display: block;
-          transform-origin: bottom center;
-          animation: moveIn 2s 0s cubic-bezier(0.36, 0, 0.06, 1) forwards;
-        }
-
-        .jt__row:nth-child(1) .jt__text {
-          transform: translateY(-0.1em);
-        }
-
-        .jt__row:nth-child(2) .jt__text {
-          transform: translateY(-0.3em) scaleY(1.1);
-        }
-
-        .jt__row:nth-child(3) .jt__text {
-          transform: translateY(-0.5em) scaleY(1.2);
-        }
-
-        .jt__row:nth-child(4) .jt__text {
-          transform: translateY(-0.7em) scaleY(1.3);
-        }
-
-        @keyframes moveIn {
-          0% {
-            opacity: 0;
-            filter: blur(10px);
-          }
-          100% {
-            transform: translateY(0em);
-            opacity: 1;
-            filter: blur(0px);
-          }
-        }
-      `}</style>
-
-      <h1
-        className={`jt ${current.weight} ${current.size} text-center`}
-        style={{ color: current.color }}
-        key={currentIndex}
-      >
-        <span className="jt__row">
-          <span className="jt__text">{current.text}</span>
-        </span>
-        <span className="jt__row jt__row--sibling" aria-hidden="true">
-          <span className="jt__text">{current.text}</span>
-        </span>
-        <span className="jt__row jt__row--sibling" aria-hidden="true">
-          <span className="jt__text">{current.text}</span>
-        </span>
-        <span className="jt__row jt__row--sibling" aria-hidden="true">
-          <span className="jt__text">{current.text}</span>
-        </span>
-      </h1>
-    </>
-  );
-};
+import HeroTypography from "./HeroTypography";
 
 // Main HeroSection Component
 const HeroSection: React.FC = () => {
   console.log("HeroSection rendering");
   const { scrollYProgress } = useScroll();
+  const [isLarge, setIsLarge] = useState(false);
+
+  useEffect(() => {
+    const checkSize = () => setIsLarge(window.innerWidth >= 1200);
+    checkSize();
+    window.addEventListener("resize", checkSize);
+    return () => window.removeEventListener("resize", checkSize);
+  }, []);
 
   // Scale + fade animations
   const speedFactor = 0.1; // smaller → faster animation
@@ -188,13 +67,13 @@ const HeroSection: React.FC = () => {
         }
       `}</style>
 
-      {/* 2x taller container → scroll-jack space */}
-      <section className="relative h-[200vh] w-full overflow-visible">
+      {/* Taller container for scroll-jack on large screens */}
+      <section className="relative h-[80vh] lg:h-[200vh] w-full overflow-visible">
         {/* Sticky hero */}
         <motion.div
-          className="sticky top-0 flex h-screen w-full flex-col items-center justify-between bg-white text-center scale-70 sm:scale-80 md:scale-90 lg:scale-100"
+          className="sticky top-0 flex h-[80vh] lg:h-screen w-full flex-col items-center bg-white text-center pt-16 lg:pt-0 scale-70 sm:scale-80 md:scale-90 lg:scale-100"
           style={{
-            opacity,
+            opacity: isLarge ? opacity : 1,
           }}
         >
           {/* Particle background */}
@@ -216,7 +95,7 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* Top content */}
-          <div className="relative z-10 mx-auto mt-8 flex flex-col items-center md:mt-16 lg:mt-32">
+          <div className="relative z-10 mx-auto mt-24 flex flex-col items-center md:mt-28 lg:mt-36">
             <h1 className="font-[Bricolage Grotesque] text-[#11406E] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium">
               We&apos;re a creative agency helping brands
               <br />
@@ -235,7 +114,7 @@ const HeroSection: React.FC = () => {
 
           {/* Typography scaling in place */}
           <motion.div
-            className="relative z-10 mx-auto mb-4 flex flex-col items-center md:mb-12 lg:mb-24 overflow-visible scale-90 sm:scale-95 md:scale-100"
+            className="relative z-10 mx-auto mt-8 mb-4 flex flex-col items-center md:mt-12 md:mb-12 lg:mt-16 lg:mb-24 overflow-visible scale-90 sm:scale-95 md:scale-100"
             style={{
               scale: heroTypographyScale,
               transformOrigin: "center center",
