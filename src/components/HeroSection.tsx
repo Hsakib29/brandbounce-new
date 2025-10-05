@@ -10,8 +10,9 @@ const HeroSection: React.FC = () => {
   const { scrollYProgress } = useScroll();
 
   // Scale + fade animations
-  const speedFactor = 0.2; // smaller → faster animation
+  const speedFactor = 0.1; // smaller → faster animation
   const scale = useTransform(scrollYProgress, [0, speedFactor], [1, 2]);
+  const heroTypographyScale = useTransform(scale, (s) => s * 0.8); // Scale down by 20%
   const opacity = useTransform(
     scrollYProgress,
     [0, speedFactor * 0.875],
@@ -58,8 +59,8 @@ const HeroSection: React.FC = () => {
         }
       `}</style>
 
-      {/* 3x taller container → more scroll-jack space */}
-      <section className="relative h-[250vh] w-full overflow-visible">
+      {/* 2x taller container → scroll-jack space */}
+      <section className="relative h-[200vh] w-full overflow-visible">
         {/* Sticky hero */}
         <motion.div
           className="sticky top-0 flex h-screen w-full flex-col items-center justify-between bg-white text-center scale-90 sm:scale-100"
@@ -86,8 +87,8 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* Top content */}
-          <div className="relative z-10 mx-auto mt-4 flex flex-col items-center md:mt-12 lg:mt-24">
-            <h1 className="font-[Bricolage Grotesque] text-[#11406E] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium">
+          <div className="relative z-10 mx-auto mt-8 flex flex-col items-center md:mt-16 lg:mt-32">
+            <h1 className="font-[Bricolage Grotesque] text-[#11406E] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium">
               We&apos;re a creative agency helping brands
               <br />
               make a splash and connect with their audience.
@@ -107,7 +108,7 @@ const HeroSection: React.FC = () => {
           <motion.div
             className="relative z-10 mx-auto mb-4 flex flex-col items-center md:mb-12 lg:mb-24 overflow-visible"
             style={{
-              scale,
+              scale: heroTypographyScale,
               transformOrigin: "center center",
             }}
           >
