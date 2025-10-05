@@ -120,7 +120,9 @@ const HeroSection: React.FC = () => {
               transformOrigin: "center center",
             }}
           >
-            <HeroTypography />
+            <div className="max-w-[1400px] h-[600px] flex justify-center items-center">
+              <HeroTypography />
+            </div>
           </motion.div>
         </motion.div>
       </section>

@@ -46,6 +46,7 @@ const HeroTypography = () => {
 
         .jt__row {
           display: block;
+          width: 100%;
         }
 
         .jt__row:nth-child(1) {
@@ -68,6 +69,7 @@ const HeroTypography = () => {
           position: absolute;
           top: 0;
           left: 0;
+          right: 0;
           user-select: none;
         }
 
@@ -76,6 +78,7 @@ const HeroTypography = () => {
           transform-origin: bottom center;
           animation: moveIn 2s 0s cubic-bezier(0.36, 0, 0.06, 1) alternate
             infinite;
+          white-space: nowrap;
         }
 
         .jt__row:nth-child(1) .jt__text {
@@ -111,22 +114,24 @@ const HeroTypography = () => {
       `}</style>
 
       <h1
-        className={`jt ${current.weight} ${current.size} text-center`}
+        className={`${current.weight} ${current.size} text-center`}
         style={{ color: current.color }}
         key={currentIndex}
       >
-        <span className="jt__row">
-          <span className="jt__text">{current.text}</span>
-        </span>
-        <span className="jt__row jt__row--sibling" aria-hidden="true">
-          <span className="jt__text">{current.text}</span>
-        </span>
-        <span className="jt__row jt__row--sibling" aria-hidden="true">
-          <span className="jt__text">{current.text}</span>
-        </span>
-        <span className="jt__row jt__row--sibling" aria-hidden="true">
-          <span className="jt__text">{current.text}</span>
-        </span>
+        <div className="jt flex justify-center items-center relative inline-block">
+          <span className="jt__row">
+            <span className="jt__text">{current.text}</span>
+          </span>
+          <span className="jt__row jt__row--sibling" aria-hidden="true">
+            <span className="jt__text">{current.text}</span>
+          </span>
+          <span className="jt__row jt__row--sibling" aria-hidden="true">
+            <span className="jt__text">{current.text}</span>
+          </span>
+          <span className="jt__row jt__row--sibling" aria-hidden="true">
+            <span className="jt__text">{current.text}</span>
+          </span>
+        </div>
       </h1>
     </>
   );
