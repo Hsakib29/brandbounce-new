@@ -4,7 +4,7 @@ export default function FooterSection() {
       {/* === CTA Section (Island) === */}
       <section className="max-w-6xl w-11/12 mx-auto cta-island bg-slate-200/80 shadow-2xl backdrop-blur-lg rounded-[3rem] p-12 md:p-20 relative z-40 -mb-24 md:-mb-32 mt-16">
         {/* Team Avatars Arc */}
-        <div className="absolute top-[-5rem] left-1/2 -translate-x-1/2 w-full max-w-3xl hidden md:block">
+        <div className="absolute top-[-5rem] left-1/2 -translate-x-1/2 w-full max-w-3xl hidden md:block z-50">
           {/* Avatar 1 */}
           <div className="absolute left-18 top-12 transform -rotate-30">
             <img
@@ -46,14 +46,26 @@ export default function FooterSection() {
             />
           </div>
         </div>
-
+        {/* CTA Circle Wrapper */}
+        <div className="absolute inset-0 overflow-hidden rounded-[3rem] z-0">
+          <div
+            id="cta-circle"
+            className="absolute top-[215%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-290 h-290 bg-[#F2F3F5]"
+            style={{
+              zIndex: -1,
+              borderRadius: "80% / 50%",
+              background:
+                // CHANGED 'to right' to 'to bottom'
+                "linear-gradient(to bottom, #F2F3F5 0%, transparent 27%)",
+            }}
+          ></div>
+        </div>
         {/* Background Blobs */}
         <div className="absolute inset-0 z-0 opacity-40">
           <div className="absolute -left-1/4 -top-1/2 w-1/2 h-full bg-slate-300/40 rounded-full blur-3xl"></div>
           <div className="absolute right-1/4 -bottom-1/2 w-1/2 h-full bg-slate-300/40 rounded-full blur-3xl"></div>
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/5 h-[90%] bg-sky-900/10 rounded-full blur-xl"></div>
         </div>
-
         {/* Main Content */}
         <div className="relative z-10 flex flex-col md:flex-row justify-between items-center md:items-start">
           <div className="text-center md:text-left mb-8 md:mb-0">
