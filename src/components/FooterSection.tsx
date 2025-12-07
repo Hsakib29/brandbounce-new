@@ -2,46 +2,46 @@ export default function FooterSection() {
   return (
     <footer className="w-full relative">
       {/* === CTA Section (Island) === */}
-      <section className="max-w-6xl w-11/12 mx-auto cta-island bg-slate-200/80 shadow-2xl backdrop-blur-lg rounded-[3rem] p-8 md:p-16 relative z-40 -mb-24 md:-mb-32 mt-16">
+      <section className="max-w-6xl w-11/12 mx-auto cta-island bg-slate-200/80 shadow-2xl backdrop-blur-lg rounded-[3rem] p-12 md:p-20 relative z-40 -mb-24 md:-mb-32 mt-16">
         {/* Team Avatars Arc */}
         <div className="absolute top-[-5rem] left-1/2 -translate-x-1/2 w-full max-w-3xl hidden md:block">
           {/* Avatar 1 */}
-          <div className="absolute -left-24 top-24 transform -rotate-30">
+          <div className="absolute left-18 top-12 transform -rotate-30">
             <img
-              className="w-28 h-28 rounded-full border-4 border-slate-200 object-cover shadow-lg"
-              src="https://placehold.co/112x112/A0B9C9/0A2540?text=P1"
+              className="w-24 h-24 rounded-full border-4 border-slate-200 object-cover shadow-lg"
+              src="https://placehold.co/96x96/A0B9C9/0A2540?text=P1"
               alt="Linda, Editor"
             />
           </div>
           {/* Avatar 2 */}
-          <div className="absolute left-10 top-10 transform -rotate-10">
+          <div className="absolute left-50 top-6 transform -rotate-10">
             <img
-              className="w-32 h-32 rounded-full border-4 border-slate-200 object-cover shadow-lg"
-              src="https://placehold.co/128x128/B9A0C9/0A2540?text=P2"
+              className="w-24 h-24 rounded-full border-4 border-slate-200 object-cover shadow-lg"
+              src="https://placehold.co/96x96/B9A0C9/0A2540?text=P2"
               alt="Terry, UI/UX Designer"
             />
           </div>
           {/* Avatar 3 */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-0">
+          <div className="absolute left-1/2 -translate-x-1/2 top-4">
             <img
-              className="w-36 h-36 rounded-full border-4 border-slate-200 object-cover shadow-xl"
-              src="https://placehold.co/144x144/C9B9A0/0A2540?text=P3"
+              className="w-24 h-24 rounded-full border-4 border-slate-200 object-cover shadow-lg"
+              src="https://placehold.co/96x96/C9B9A0/0A2540?text=P3"
               alt="Sidney, Founder"
             />
           </div>
           {/* Avatar 4 */}
-          <div className="absolute right-10 top-10 transform rotate-10">
+          <div className="absolute right-50 top-6 transform rotate-10">
             <img
-              className="w-32 h-32 rounded-full border-4 border-slate-200 object-cover shadow-lg"
-              src="https://placehold.co/128x128/A0C9B9/0A2540?text=P4"
+              className="w-24 h-24 rounded-full border-4 border-slate-200 object-cover shadow-lg"
+              src="https://placehold.co/96x96/A0C9B9/0A2540?text=P4"
               alt="Sara, Developer"
             />
           </div>
           {/* Avatar 5 */}
-          <div className="absolute -right-24 top-24 transform rotate-30">
+          <div className="absolute right-18 top-12 transform rotate-30">
             <img
-              className="w-28 h-28 rounded-full border-4 border-slate-200 object-cover shadow-lg"
-              src="https://placehold.co/112x112/B9A0B9/0A2540?text=P5"
+              className="w-24 h-24 rounded-full border-4 border-slate-200 object-cover shadow-lg"
+              src="https://placehold.co/96x96/B9A0B9/0A2540?text=P5"
               alt="Mandy, Designer"
             />
           </div>
