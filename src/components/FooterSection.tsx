@@ -57,7 +57,7 @@ export default function FooterSection() {
         {/* Main Content */}
         <div className="relative z-10 flex flex-col md:flex-row justify-between items-center md:items-start">
           <div className="text-center md:text-left mb-8 md:mb-0">
-            <h2 className="text-sky-900 text-6xl font-bold font-bricolage leading-tight">
+            <h2 className="text-sky-900 text-5xl font-bold font-bricolage leading-tight">
               Lets Create <br className="hidden md:block" /> Together
             </h2>
           </div>
@@ -66,7 +66,7 @@ export default function FooterSection() {
           <a
             href="mailto:demo@email.com"
             className="transition duration-300 ease-in-out transform hover:scale-[1.02] active:scale-[0.98]
-                        px-8 py-5 bg-white/80 rounded-[20px] shadow-lg backdrop-blur-xl inline-flex justify-start items-center
+                        px-6 py-4 bg-white/80 rounded-[20px] shadow-lg backdrop-blur-xl inline-flex justify-start items-center
                         gap-24 overflow-hidden cursor-pointer border border-transparent hover:border-white/50"
           >
             <div className="inline-flex flex-col justify-center items-start gap-1">
