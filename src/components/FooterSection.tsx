@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function FooterSection() {
   return (
     <footer className="w-full relative">
@@ -59,6 +61,21 @@ export default function FooterSection() {
                 "linear-gradient(to bottom, #F2F3F5 0%, transparent 27%)",
             }}
           ></div>
+          <Image
+            width={400}
+            height={400}
+            src="/logo-icon.svg"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+            style={{
+              mixBlendMode: "overlay",
+              maskImage:
+                "linear-gradient(to bottom, transparent 25%, black 35%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, transparent 25%, black 35%)",
+              opacity: 0.5,
+            }}
+            alt="Logo"
+          />
         </div>
         {/* Background Blobs */}
         <div className="absolute inset-0 z-0 opacity-40">
@@ -77,22 +94,22 @@ export default function FooterSection() {
           {/* Email Card */}
           <a
             href="mailto:demo@email.com"
-            className="transition duration-300 ease-in-out transform hover:scale-[1.02] active:scale-[0.98]
-                        px-6 py-4 bg-white/80 rounded-[20px] shadow-lg backdrop-blur-xl inline-flex justify-start items-center
+            className="group transition duration-300 ease-in-out transform hover:scale-[1.02] active:scale-[0.98]
+                        px-6 py-4 bg-white/80 hover:bg-sky-900 rounded-[20px] shadow-lg backdrop-blur-xl inline-flex justify-start items-center
                         gap-24 overflow-hidden cursor-pointer border border-transparent hover:border-white/50"
           >
-            <div className="inline-flex flex-col justify-center items-start gap-1">
-              <div className="text-sky-900 text-5xl font-medium font-bricolage">
+            <div className="inline-flex flex-col justify-center items-start gap-1 group-hover:text-white">
+              <div className="text-sky-900 group-hover:text-white/80 text-5xl font-medium font-bricolage">
                 Email Us
               </div>
-              <div className="text-sky-900 text-2xl font-medium font-poppins">
+              <div className="text-sky-900 group-hover:text-white/80 text-2xl font-medium font-poppins">
                 demo@email.com
               </div>
             </div>
 
             <div className="w-24 h-24 relative flex items-center justify-center">
               <svg
-                className="w-16 h-16 text-sky-900"
+                className="w-16 h-16 text-sky-900 group-hover:text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
