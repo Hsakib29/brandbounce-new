@@ -4,45 +4,55 @@ export default function FooterSection() {
   return (
     <footer className="w-full relative">
       {/* === CTA Section (Island) === */}
-      <section className="max-w-6xl w-11/12 mx-auto cta-island bg-slate-200/80 shadow-2xl backdrop-blur-lg rounded-[3rem] p-12 md:p-20 relative z-40 -mb-24 md:-mb-32 mt-16">
+      <section className="max-w-6xl w-11/12 mx-auto cta-island bg-slate-200/80 shadow-2xl backdrop-blur-lg rounded-[3rem] p-12 md:p-20 relative z-40 -mb-24 md:-mb-32 mt-100">
         {/* Team Avatars Arc */}
-        <div className="absolute top-[-5rem] left-1/2 -translate-x-1/2 w-full max-w-3xl hidden md:block z-50">
+        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-full max-w-3xl hidden md:block z-50">
           {/* Avatar 1 */}
           <div className="absolute left-18 top-12 transform -rotate-30">
-            <img
-              className="w-24 h-24 rounded-full border-4 border-slate-200 object-cover shadow-lg"
+            <Image
+              width={96}
+              height={96}
+              className="rounded-full border-4 border-slate-200 object-cover shadow-lg"
               src="https://placehold.co/96x96/A0B9C9/0A2540?text=P1"
               alt="Linda, Editor"
             />
           </div>
           {/* Avatar 2 */}
           <div className="absolute left-50 top-6 transform -rotate-10">
-            <img
-              className="w-24 h-24 rounded-full border-4 border-slate-200 object-cover shadow-lg"
+            <Image
+              width={96}
+              height={96}
+              className="rounded-full border-4 border-slate-200 object-cover shadow-lg"
               src="https://placehold.co/96x96/B9A0C9/0A2540?text=P2"
               alt="Terry, UI/UX Designer"
             />
           </div>
           {/* Avatar 3 */}
           <div className="absolute left-1/2 -translate-x-1/2 top-4">
-            <img
-              className="w-24 h-24 rounded-full border-4 border-slate-200 object-cover shadow-lg"
+            <Image
+              width={96}
+              height={96}
+              className="rounded-full border-4 border-slate-200 object-cover shadow-lg"
               src="https://placehold.co/96x96/C9B9A0/0A2540?text=P3"
               alt="Sidney, Founder"
             />
           </div>
           {/* Avatar 4 */}
           <div className="absolute right-50 top-6 transform rotate-10">
-            <img
-              className="w-24 h-24 rounded-full border-4 border-slate-200 object-cover shadow-lg"
+            <Image
+              width={96}
+              height={96}
+              className="rounded-full border-4 border-slate-200 object-cover shadow-lg"
               src="https://placehold.co/96x96/A0C9B9/0A2540?text=P4"
               alt="Sara, Developer"
             />
           </div>
           {/* Avatar 5 */}
           <div className="absolute right-18 top-12 transform rotate-30">
-            <img
-              className="w-24 h-24 rounded-full border-4 border-slate-200 object-cover shadow-lg"
+            <Image
+              width={96}
+              height={96}
+              className="rounded-full border-4 border-slate-200 object-cover shadow-lg"
               src="https://placehold.co/96x96/B9A0B9/0A2540?text=P5"
               alt="Mandy, Designer"
             />
@@ -127,7 +137,7 @@ export default function FooterSection() {
       </section>
 
       {/* === Footer Body === */}
-      <div className="bg-sky-900 rounded-tl-3xl rounded-tr-3xl pt-32 relative overflow-hidden z-10">
+      <div className="bg-sky-900 rounded-tl-3xl rounded-tr-3xl pt-40 relative overflow-hidden z-10">
         <div className="absolute inset-x-0 top-0 h-[350px] md:h-[450px] mx-auto z-0 overflow-hidden">
           <div className="absolute inset-x-0 bottom-0 w-full h-full bg-radial-new"></div>
         </div>
@@ -221,7 +231,9 @@ export default function FooterSection() {
 
         {/* Logo */}
         <div className="mt-16 mb-4 flex justify-center items-center relative z-10 px-6">
-          <img
+          <Image
+            width={1800}
+            height={300}
             src="/footer-logo.png"
             className="w-full h-auto text-white xl:max-w-[1800px]"
             alt="Brandbounce Logo"
