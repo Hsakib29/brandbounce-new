@@ -132,7 +132,7 @@ export default function FooterSection() {
           <div className="absolute inset-x-0 bottom-0 w-full h-full bg-radial-new"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-screen-2xl mx-auto px-6 relative z-10">
           {/* Description & Links */}
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-20 mb-16">
             <div className="lg:col-span-2">
@@ -217,17 +217,19 @@ export default function FooterSection() {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Logo */}
-          <div className="mt-16 mb-4 flex justify-start items-center relative z-10">
-            <img
-              src="/footer-logo.png"
-              className="w-full h-auto text-white max-w-3xl lg:max-w-5xl"
-              alt="Brandbounce Logo"
-            />
-          </div>
+        {/* Logo */}
+        <div className="mt-16 mb-4 flex justify-center items-center relative z-10 px-6">
+          <img
+            src="/footer-logo.png"
+            className="w-full h-auto text-white xl:max-w-[1800px]"
+            alt="Brandbounce Logo"
+          />
+        </div>
 
-          {/* Bottom */}
+        {/* Bottom */}
+        <div className="max-w-screen-2xl mx-auto px-6 relative z-10">
           <div className="pt-4 pb-8 flex flex-col sm:flex-row justify-between items-center text-sm md:text-base font-medium font-bricolage">
             <div className="text-white/70 order-2 sm:order-1 mb-2 sm:mb-0">
               &copy; Copyright Brandbounce
