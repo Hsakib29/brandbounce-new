@@ -57,7 +57,7 @@ export const BenefitCard: React.FC<BenefitCardProps> = ({
 
       {/* Content */}
       <div
-        className={`relative z-[1] p-4 sm:p-5 md:p-6 ${textClassName} ${
+        className={`relative z-1 p-4 sm:p-5 md:p-6 ${textClassName} ${
           align === "center"
             ? "text-center"
             : align === "right"
@@ -117,8 +117,8 @@ const GlassBadge: React.FC<{ text: string; className?: string }> = ({
   return (
     <div
       className={[
-        "inline-flex h-10 items-center justify-center rounded-3xl px-[12px]",
-        "bg-white/60 [outline-style:solid] outline-[0.5px] outline-white/5 outline-offset-2",
+        "inline-flex h-10 items-center justify-center rounded-3xl px-3",
+        "bg-white/60 outline-solid outline-[0.5px] outline-white/5 outline-offset-2",
         "shadow-[inset_0px_2px_4px_0px_rgba(255,255,255,0.40)]",
         "backdrop-blur-[5px]",
         className,
@@ -144,7 +144,7 @@ const BenefitsSection: React.FC = () => {
         </h2>
 
         {/* Responsive Bento Grid (mobile and desktop) */}
-        <div className="grid grid-cols-3 md:grid-cols-4 [grid-template-rows:repeat(6,minmax(0,135px))] md:[grid-template-rows:repeat(4,minmax(0,200px))] gap-2 md:gap-5 m-4">
+        <div className="grid grid-cols-3 md:grid-cols-4 grid-rows-[repeat(6,minmax(0,135px))] md:grid-rows-[repeat(4,minmax(0,200px))] gap-2 md:gap-5 m-4">
           {/* 0 - 50+ Brands Ignited */}
           <BenefitCard
             containerClassName="col-start-1 row-start-1 row-span-2 md:col-start-1 md:row-start-1 md:col-span-1 md:row-span-2 bg-sky-950"

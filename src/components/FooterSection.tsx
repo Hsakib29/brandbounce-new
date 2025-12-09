@@ -19,12 +19,12 @@ export default function FooterSection() {
             <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-8 opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 origin-bottom transition-all duration-300 pointer-events-none z-50">
               <div className="w-52 h-64 relative rounded-lg outline-[2.93px] outline-offset-[-2.93px] outline-slate-200 overflow-hidden">
                 <div className="w-20 left-[5.14px] top-[73.37px] absolute inline-flex flex-col justify-start items-start gap-2">
-                  <div className="px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40)] shadow-[inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
+                  <div className="px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40),inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
                     <div className="justify-start text-sky-900 text-xs font-medium font-['Bricolage_Grotesque']">
                       Linda
                     </div>
                   </div>
-                  <div className="self-stretch px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40)] shadow-[inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
+                  <div className="self-stretch px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40),inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
                     <div className="justify-start text-gray-600 text-[9.35px] font-normal font-['Poppins']">
                       Editor
                     </div>
@@ -45,12 +45,12 @@ export default function FooterSection() {
             <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-8 opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 origin-bottom transition-all duration-300 pointer-events-none z-50">
               <div className="w-52 h-64 relative rounded-lg outline-[2.93px] outline-offset-[-2.93px] outline-slate-200 overflow-hidden">
                 <div className="w-20 left-[5.14px] top-[73.37px] absolute inline-flex flex-col justify-start items-start gap-2">
-                  <div className="px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40)] shadow-[inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
+                  <div className="px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40),inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
                     <div className="justify-start text-sky-900 text-xs font-medium font-['Bricolage_Grotesque']">
                       Terry
                     </div>
                   </div>
-                  <div className="self-stretch px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40)] shadow-[inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
+                  <div className="self-stretch px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40),inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
                     <div className="justify-start text-gray-600 text-[9.35px] font-normal font-['Poppins']">
                       UI/UX Designer
                     </div>
@@ -71,12 +71,12 @@ export default function FooterSection() {
             <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-8 opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 origin-bottom transition-all duration-300 pointer-events-none z-50">
               <div className="w-52 h-64 relative rounded-lg outline-[2.93px] outline-offset-[-2.93px] outline-slate-200 overflow-hidden">
                 <div className="w-20 left-[5.14px] top-[73.37px] absolute inline-flex flex-col justify-start items-start gap-2">
-                  <div className="px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40)] shadow-[inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
+                  <div className="px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40),inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
                     <div className="justify-start text-sky-900 text-xs font-medium font-['Bricolage_Grotesque']">
                       Sidney
                     </div>
                   </div>
-                  <div className="self-stretch px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40)] shadow-[inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
+                  <div className="self-stretch px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40),inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
                     <div className="justify-start text-gray-600 text-[9.35px] font-normal font-['Poppins']">
                       Founder
                     </div>
@@ -97,12 +97,12 @@ export default function FooterSection() {
             <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-8 opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 origin-bottom transition-all duration-300 pointer-events-none z-50">
               <div className="w-52 h-64 relative rounded-lg outline-[2.93px] outline-offset-[-2.93px] outline-slate-200 overflow-hidden">
                 <div className="w-20 left-[5.14px] top-[73.37px] absolute inline-flex flex-col justify-start items-start gap-2">
-                  <div className="px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40)] shadow-[inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
+                  <div className="px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40),inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
                     <div className="justify-start text-sky-900 text-xs font-medium font-['Bricolage_Grotesque']">
                       Sara
                     </div>
                   </div>
-                  <div className="self-stretch px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40)] shadow-[inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
+                  <div className="self-stretch px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40),inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
                     <div className="justify-start text-gray-600 text-[9.35px] font-normal font-['Poppins']">
                       Developer
                     </div>
@@ -123,12 +123,12 @@ export default function FooterSection() {
             <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-8 opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 origin-bottom transition-all duration-300 pointer-events-none z-50">
               <div className="w-52 h-64 relative rounded-lg outline-[2.93px] outline-offset-[-2.93px] outline-slate-200 overflow-hidden">
                 <div className="w-20 left-[5.14px] top-[73.37px] absolute inline-flex flex-col justify-start items-start gap-2">
-                  <div className="px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40)] shadow-[inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
+                  <div className="px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40),inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
                     <div className="justify-start text-sky-900 text-xs font-medium font-['Bricolage_Grotesque']">
                       Mandy
                     </div>
                   </div>
-                  <div className="self-stretch px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40)] shadow-[inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
+                  <div className="self-stretch px-1.5 py-[2.80px] bg-white/60 rounded-xl shadow-[inset_0px_0.9346297383308411px_1.8692594766616821px_0px_rgba(255,255,255,0.40),inset_0px_-0.9346297383308411px_1.8692594766616821px_0px_rgba(0,0,0,0.20)] outline-[0.23px] outline-white/5 backdrop-blur-[2.34px] flex flex-col justify-center items-center gap-1">
                     <div className="justify-start text-gray-600 text-[9.35px] font-normal font-['Poppins']">
                       Designer
                     </div>
