@@ -48,7 +48,7 @@ const TestimonialCard = ({
 }) => {
   // Make the card responsive: full width with max width, height auto with min height
   return (
-    <div className="w-full max-w-[384px] min-h-[250px] sm:min-h-[320px] px-3.5 py-2.5 bg-neutral-100 rounded-xl outline-1 outline-offset-[-0.90px] outline-zinc-200 inline-flex flex-col justify-start items-start gap-3.5 overflow-hidden">
+    <div className="w-[384px] min-h-[250px] sm:min-h-[320px] px-3.5 py-2.5 bg-neutral-100 rounded-xl outline-1 outline-offset-[-0.90px] outline-zinc-200 inline-flex flex-col justify-start items-start gap-3.5 overflow-hidden">
       {/* User Info: Removed 'flex-1' from this container to stop it from 
         stretching vertically and pushing the testimonial text down.
       */}
