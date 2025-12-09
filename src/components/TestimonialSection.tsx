@@ -58,10 +58,10 @@ const TestimonialCard = ({
         </div>
         <div className="flex flex-col justify-start items-start">
           {/* Name: Updated to text-2xl and font-bold to match the image's appearance. */}
-          <div className="justify-start text-sky-950 text-xl sm:text-2xl font-bold font-['Poppins'] break-words whitespace-normal max-w-full">
+          <div className="justify-start text-sky-950 text-xl sm:text-2xl font-bold font-['Poppins'] wrap-break-word whitespace-normal max-w-full">
             {name}
           </div>
-          <div className="justify-start text-blue-500 text-base sm:text-lg font-medium font-['Poppins'] break-words whitespace-normal max-w-full">
+          <div className="justify-start text-blue-500 text-base sm:text-lg font-medium font-['Poppins'] wrap-break-word whitespace-normal max-w-full">
             {company}
           </div>
         </div>
