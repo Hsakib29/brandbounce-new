@@ -17,7 +17,7 @@ const AnimatedNavbar: React.FC = () => {
         {navLinks.map((link) => (
           <div
             key={link.name}
-            className="flex items-center justify-center gap-2.5 cursor-pointer relative group text-[#11406E] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#11406E] after:origin-left after:transition-transform after:duration-300 after:scale-x-0 group-hover:after:scale-x-100"
+            className="flex items-center justify-center gap-2.5 cursor-pointer relative group text-[#11406E] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-[#11406E] after:origin-left after:transition-transform after:duration-300 after:scale-x-0 group-hover:after:scale-x-100"
           >
             <span className="text-lg font-poppins hover:underline">
               {link.name}
@@ -146,7 +146,7 @@ const Header: React.FC<HeaderProps> = ({ toggleBg, setToggleBg }) => {
     >
       <div className="w-full flex items-center justify-between pointer-events-auto">
         {/* Logo Container, aligned to the left */}
-        <div className="relative w-[158px] h-[40px] flex flex-row items-center text-white [mix-blend-mode:plus-darker]">
+        <div className="relative w-[158px] h-10 flex flex-row items-center text-white mix-blend-plus-darker">
           {/* Logo Text - fades out */}
           <motion.div
             animate={{ opacity: isScrolledPastHero ? 0 : 1 }}
