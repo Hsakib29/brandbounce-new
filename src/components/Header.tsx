@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import switchStyles from "./SwitchToggle.module.css";
 import Image from "next/image";
 import { motion, useScroll } from "framer-motion";
@@ -61,10 +61,19 @@ const Header: React.FC<HeaderProps> = ({ toggleBg, setToggleBg }) => {
   const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const heroHeight = typeof window !== "undefined" ? window.innerHeight : 1000; // fallback
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const unsubscribe = scrollY.on("change", (latest) => {
       setIsScrolledPastHero(latest > heroHeight);
+      console.log(
+        "Scrolled past hero:",
+        latest > heroHeight,
+        "latest:",
+        latest,
+        "heroHeight:",
+        heroHeight
+      );
     });
     return unsubscribe;
   }, [scrollY, heroHeight]);
@@ -91,6 +100,34 @@ const Header: React.FC<HeaderProps> = ({ toggleBg, setToggleBg }) => {
     };
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    console.log("Mobile menu open:", isMobileMenuOpen);
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    const logDimensions = () => {
+      console.log(
+        "Window width:",
+        window.innerWidth,
+        "height:",
+        window.innerHeight
+      );
+      if (headerRef.current) {
+        console.log(
+          "Header clientWidth:",
+          headerRef.current.clientWidth,
+          "scrollWidth:",
+          headerRef.current.scrollWidth,
+          "overflow:",
+          headerRef.current.scrollWidth > headerRef.current.clientWidth
+        );
+      }
+    };
+    logDimensions();
+    window.addEventListener("resize", logDimensions);
+    return () => window.removeEventListener("resize", logDimensions);
+  }, []);
+
   const navLinks = [
     { name: "Services" },
     { name: "Projects" },
@@ -103,7 +140,10 @@ const Header: React.FC<HeaderProps> = ({ toggleBg, setToggleBg }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full h-[120px] flex items-center z-50 pointer-events-none px-4 sm:px-6 lg:px-8">
+    <header
+      ref={headerRef}
+      className="fixed top-0 left-0 w-full h-[120px] flex items-center z-50 pointer-events-none px-4 sm:px-6 lg:px-8"
+    >
       <div className="w-full flex items-center justify-between pointer-events-auto">
         {/* Logo Container, aligned to the left */}
         <div className="relative w-[158px] h-[40px] flex flex-row items-center text-white [mix-blend-mode:plus-darker]">
@@ -147,13 +187,13 @@ const Header: React.FC<HeaderProps> = ({ toggleBg, setToggleBg }) => {
         </div>
         <div className="flex items-center gap-6">
           {/* Desktop Navigation - Hidden on mobile */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block xl:hidden">
             <AnimatedNavbar />
           </div>
 
           {/* Hamburger Menu Button - Visible on mobile */}
           <button
-            className="hamburger-button lg:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10 bg-white/5 rounded-lg outline-1 outline-white/50 backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-white/60 z-50"
+            className="hamburger-button lg:hidden xl:block flex flex-col justify-center items-center gap-1.5 w-10 h-10 bg-white/5 rounded-lg outline-1 outline-white/50 backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-white/60 z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
@@ -194,7 +234,7 @@ const Header: React.FC<HeaderProps> = ({ toggleBg, setToggleBg }) => {
         initial={{ x: "100%" }}
         animate={{ x: isMobileMenuOpen ? 0 : "100%" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="mobile-menu fixed top-0 right-0 w-full sm:w-80 h-screen bg-white/95 backdrop-blur-lg shadow-2xl lg:hidden z-40 pt-32"
+        className="mobile-menu fixed top-0 right-0 w-full sm:w-80 h-screen bg-white/95 backdrop-blur-lg shadow-2xl lg:hidden xl:block z-40 pt-32"
       >
         <nav className="flex flex-col items-center gap-8 px-8">
           {/* Navigation Links */}

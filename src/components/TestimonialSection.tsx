@@ -48,27 +48,27 @@ const TestimonialCard = ({
 }) => {
   // Make the card responsive: full width with max width, height auto with min height
   return (
-    <div className="w-[384px] min-h-[250px] sm:min-h-[320px] px-3.5 py-2.5 bg-neutral-100 rounded-xl outline-1 outline-offset-[-0.90px] outline-zinc-200 inline-flex flex-col justify-start items-start gap-3.5 overflow-hidden">
+    <div className="w-[320px] min-h-[250px] sm:min-h-80 px-3.5 py-2.5 bg-neutral-100 rounded-xl outline-1 outline-offset-[-0.90px] outline-zinc-200 inline-flex flex-col justify-start items-start gap-3.5 overflow-hidden">
       {/* User Info: Removed 'flex-1' from this container to stop it from 
         stretching vertically and pushing the testimonial text down.
       */}
-      <div className="inline-flex justify-start items-center gap-3">
+      <div className="flex justify-start items-center gap-3">
         <div className="w-11 h-11 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
           {name.charAt(0)}
         </div>
-        <div className="inline-flex flex-col justify-start items-start">
+        <div className="flex flex-col justify-start items-start">
           {/* Name: Updated to text-2xl and font-bold to match the image's appearance. */}
-          <div className="justify-start text-sky-950 text-xl sm:text-2xl font-bold font-['Poppins']">
+          <div className="justify-start text-sky-950 text-xl sm:text-2xl font-bold font-['Poppins'] break-words whitespace-normal max-w-full">
             {name}
           </div>
-          <div className="justify-start text-blue-500 text-base sm:text-lg font-medium font-['Poppins']">
+          <div className="justify-start text-blue-500 text-base sm:text-lg font-medium font-['Poppins'] break-words whitespace-normal max-w-full">
             {company}
           </div>
         </div>
       </div>
       {/* Testimonial Text */}
       <div className="p-2.5">
-        <div className="text-black text-base sm:text-lg font-normal font-['Poppins'] break-words whitespace-normal">
+        <div className="text-black text-base sm:text-lg font-normal font-['Poppins'] wrap-break-word whitespace-normal">
           {testimonial}
         </div>
       </div>
@@ -196,7 +196,7 @@ const TestimonialsSection = () => {
           {/* Row 1 (Forward Scroll, responsive positioning) */}
           <InfiniteScrollRow
             pauseOnHover={true}
-            className="left-[-100%] top-[0px] lg:left-[-753.79px] lg:top-[91.97px]"
+            className=" -left-full top-0 lg:left-[-753.79px] lg:top-[91.97px]"
           >
             {firstRowTestimonials.map((t, i) => (
               <TestimonialCard key={`f-${i}`} {...t} />
@@ -207,7 +207,7 @@ const TestimonialsSection = () => {
           <InfiniteScrollRow
             reverse={true}
             pauseOnHover={true}
-            className="left-[-100%] top-[260px] sm:top-[340px] lg:left-[-41.48px] lg:top-[474.28px]"
+            className=" -left-full top-[260px] sm:top-[340px] lg:left-[-41.48px] lg:top-[474.28px]"
           >
             {secondRowTestimonials.map((t, i) => (
               <TestimonialCard key={`s-${i}`} {...t} />
@@ -215,7 +215,7 @@ const TestimonialsSection = () => {
           </InfiniteScrollRow>
 
           {/* 5. Gradient Overlay: bg-gradient-to-r from-gray-50 via-white/0 to-gray-50 */}
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-50 via-white/0 to-gray-50 pointer-events-none" />
+          <div className="absolute inset-0 bg-linear-to-r from-gray-50 via-white/0 to-gray-50 pointer-events-none" />
         </div>
       </div>
     </>
